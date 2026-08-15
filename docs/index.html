@@ -151,27 +151,28 @@
     <button class="dialog-close" aria-label="Close">×</button>
     <span class="kicker">LOCAL-FIRST INPUT</span>
     <h2>Bring your own investigation</h2>
-    <p>Nothing is uploaded by this page. Inspect a repository folder locally, or load artifacts produced by the Scotoma CLI.</p>
+    <p>Upload the repository Claude or Codex investigated and that agent's session log. Scotoma compares the complete territory with the evidence the agent actually examined.</p>
     <div class="upload-grid">
       <label class="drop-card">
-        <span class="drop-icon">⌗</span><b>Choose repository folder</b>
-        <small>Build a browser-local territory preview</small>
+        <span class="drop-icon">⌗</span><b>1 · Choose repository folder</b>
+        <small>The complete territory the agent could inspect</small>
         <input id="repoFolder" type="file" webkitdirectory multiple>
       </label>
       <label class="drop-card">
-        <span class="drop-icon">{ }</span><b>Load Scotoma artifacts</b>
-        <small>index, trace, coverage, adjudication and flip JSON</small>
-        <input id="artifactFiles" type="file" accept="application/json,.json" multiple>
+        <span class="drop-icon">≋</span><b>2 · Choose agent session log</b>
+        <small>Claude Code or Codex JSON/JSONL transcript</small>
+        <input id="transcriptFile" type="file" accept="application/json,.json,.jsonl,application/x-ndjson">
       </label>
     </div>
     <div class="backend-fields">
+      <label><span>AGENT FORMAT</span><select id="agentVendor"><option value="auto">Auto-detect</option><option value="claude-code">Claude Code</option><option value="codex">Codex</option></select></label>
       <label class="question-field"><span>QUESTION ABOUT THIS REPOSITORY</span><input id="uploadQuestion" type="text" placeholder="Where could authentication be bypassed?"></label>
       <label><span>SCOTOMA API URL</span><input id="apiUrl" type="url" placeholder="https://scotoma-api.onrender.com"></label>
       <label><span>DEMO ACCESS TOKEN</span><input id="accessToken" type="password" placeholder="Optional unless server requires it"></label>
     </div>
-    <button id="startLiveAudit" class="live-audit-btn" disabled>Run live repository audit <span>→</span></button>
-    <div id="uploadStatus" class="upload-status">Your API key stays on the backend. Repository files are sent only when you click “Run live repository audit.”</div>
-    <pre class="cli-hint">python -m scotoma.cli index ./repo --out index.json</pre>
+    <button id="startLiveAudit" class="live-audit-btn" disabled>Audit this agent session <span>→</span></button>
+    <div id="uploadStatus" class="upload-status">Select both inputs. Your OpenAI key stays on the backend; it is used to rank and adjudicate missed evidence.</div>
+    <details><summary>Already ran Scotoma locally?</summary><label class="artifact-link">Load completed index, trace, coverage, adjudication and flip JSON<input id="artifactFiles" type="file" accept="application/json,.json" multiple></label></details>
   </dialog>
 
   <div id="toast" class="toast"></div>

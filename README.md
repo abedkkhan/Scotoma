@@ -3,7 +3,7 @@
 > Code coverage tells you what your tests did not execute. Scotoma tells you
 > what your AI agent did not investigate before reaching a conclusion.
 
-Scotoma indexes a repository, records an agent's file-level examination depth,
+Scotoma indexes a repository, imports an agent's session log to reconstruct file-level examination depth,
 calculates Risk-Weighted Coverage, adjudicates likely blind spots against the
 agent's claims, and tests whether injecting the missing evidence changes its
 answer.
@@ -38,13 +38,14 @@ For the complete implementation notes and current evidence, see
 ## Architecture
 
 ```text
-Repository → territory index → bounded agent trace → weighted coverage
+Repository + Claude Code/Codex session → normalized trace → weighted coverage
            → candidate retrieval → claim adjudication → conclusion flip test
 ```
 
 The GitHub Pages frontend is intentionally static: repository-folder previews
 happen locally in the browser. When a Scotoma API URL is configured, the same
-dialog submits the selected source files and question to the hosted pipeline,
+dialog submits the selected source files, the matching Claude Code/Codex JSONL
+session, and the original question to the hosted pipeline,
 polls all five stages, and renders the resulting investigation. The OpenAI key
 never enters the browser.
 

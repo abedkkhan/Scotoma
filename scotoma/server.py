@@ -20,6 +20,7 @@ from .agent import run_agent
 from .evaluate import evaluate_rankers
 from .index import build_index
 from .rank import calculate_coverage
+from .transcript import parse_transcript
 
 MAX_FILES = int(os.environ.get("SCOTOMA_MAX_FILES", "1500"))
 MAX_UPLOAD_BYTES = int(os.environ.get("SCOTOMA_MAX_UPLOAD_BYTES", str(30 * 1024 * 1024)))
@@ -118,7 +119,7 @@ def _update_job(job_id: str, **values: Any) -> None:
             _jobs[job_id].update(values, updated_at=_now())
 
 
-def _run_pipeline(job_id: str, repo_path: Path, question: str) -> None:
+def _run_pipeline(job_id: str, repo_path: Path, question: str, transcript: bytes | None, vendor: str) -> None:
     CACHE_ROOT.mkdir(parents=True, exist_ok=True)
     try:
         _update_job(job_id, status="running", stage="indexing", progress=10)
@@ -126,8 +127,17 @@ def _run_pipeline(job_id: str, repo_path: Path, question: str) -> None:
         if not index["units"]:
             raise ValueError("No supported source files were found in the uploaded repository")
 
-        _update_job(job_id, stage="agent", progress=25, unit_count=index["unit_count"])
-        trace = run_agent(str(repo_path), question)
+        _update_job(job_id, stage="transcript", progress=25, unit_count=index["unit_count"])
+        if transcript:
+            trace = parse_transcript(
+                transcript,
+                str(repo_path),
+                (unit["path"] for unit in index["units"]),
+                question=question,
+                vendor=vendor,
+            )
+        else:
+            trace = run_agent(str(repo_path), question)
 
         _update_job(job_id, stage="coverage", progress=48)
         coverage = calculate_coverage(
@@ -189,6 +199,8 @@ async def create_audit(
     question: Annotated[str, Form(min_length=5, max_length=1000)],
     files: Annotated[list[UploadFile], File()],
     paths: Annotated[list[str], Form()],
+    transcript: Annotated[UploadFile | None, File()] = None,
+    vendor: Annotated[str, Form()] = "auto",
 ) -> dict[str, Any]:
     if not os.environ.get("OPENAI_API_KEY"):
         raise HTTPException(status_code=503, detail="The server has no OpenAI API key configured")
@@ -197,6 +209,11 @@ async def create_audit(
     if active >= MAX_CONCURRENT_JOBS:
         raise HTTPException(status_code=429, detail="Audit capacity is full; try again shortly")
 
+    transcript_bytes = await transcript.read() if transcript else None
+    if transcript and len(transcript_bytes or b"") > 20 * 1024 * 1024:
+        raise HTTPException(status_code=413, detail="Session log exceeds 20MB")
+    if transcript:
+        await transcript.close()
     job_id = uuid.uuid4().hex
     WORK_ROOT.mkdir(parents=True, exist_ok=True)
     job_root = Path(tempfile.mkdtemp(prefix=f"{job_id}-", dir=WORK_ROOT))
@@ -221,7 +238,7 @@ async def create_audit(
     }
     with _jobs_lock:
         _jobs[job_id] = job
-    _executor.submit(_run_pipeline, job_id, repo_path, question)
+    _executor.submit(_run_pipeline, job_id, repo_path, question, transcript_bytes, vendor)
     return job
 
 

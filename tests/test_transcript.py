@@ -1,0 +1,40 @@
+import json
+
+from scotoma.transcript import parse_transcript
+
+
+def _jsonl(*events: dict) -> bytes:
+    return "\n".join(json.dumps(event) for event in events).encode()
+
+
+def test_parses_claude_code_reads_and_answer() -> None:
+    raw = _jsonl(
+        {"type": "user", "message": {"content": "Is authentication safe?"}},
+        {
+            "type": "assistant",
+            "message": {
+                "model": "claude-sonnet-4",
+                "content": [
+                    {"type": "tool_use", "name": "Read", "input": {"file_path": "/work/repo/src/auth.py"}}
+                ],
+            },
+        },
+        {"type": "assistant", "message": {"content": [{"type": "text", "text": "Authentication is safe."}]}},
+    )
+    trace = parse_transcript(raw, "/server/repo", ["src/auth.py"], vendor="claude-code")
+    assert trace["question"] == "Is authentication safe?"
+    assert trace["answer"] == "Authentication is safe."
+    assert trace["model"] == "claude-sonnet-4"
+    assert trace["examined"] == {"src/auth.py": 1.0}
+    assert trace["source"]["imported"] is True
+
+
+def test_partial_read_keeps_truncated_depth() -> None:
+    raw = _jsonl(
+        {"type": "user", "message": {"content": "Explain sessions"}},
+        {"type": "assistant", "message": {"content": [
+            {"type": "tool_use", "name": "Read", "input": {"file_path": "src/sessions.py", "limit": 200}}
+        ]}},
+    )
+    trace = parse_transcript(raw, "/repo", ["src/sessions.py"], vendor="claude-code")
+    assert trace["examined"] == {"src/sessions.py": 0.6}
