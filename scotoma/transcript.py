@@ -136,8 +136,18 @@ def parse_transcript(
             model = message.get("model") or model
         tools.extend(_tool_blocks(event))
 
+    result_texts = [str(event.get("result", "")).strip() for event in events if event.get("result")]
+    failure = next(
+        (text for text in result_texts if "not logged in" in text.lower()),
+        None,
+    )
+    if failure:
+        raise ValueError(f"Claude Code session did not run: {failure}")
+
     resolved_question = (question or (user_texts[0] if user_texts else "Imported agent investigation")).strip()
-    answer = assistant_texts[-1].strip() if assistant_texts else "No final textual answer was found in the uploaded session."
+    answer = assistant_texts[-1].strip() if assistant_texts else (result_texts[-1] if result_texts else "")
+    if not answer:
+        raise ValueError("No final agent answer was found in the uploaded session log")
     recorder = TraceRecorder(resolved_question, repo_path, str(model))
     for name, args, summary in tools:
         lowered = name.lower().split(".")[-1]

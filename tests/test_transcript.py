@@ -35,6 +35,17 @@ def test_partial_read_keeps_truncated_depth() -> None:
         {"type": "assistant", "message": {"content": [
             {"type": "tool_use", "name": "Read", "input": {"file_path": "src/sessions.py", "limit": 200}}
         ]}},
+        {"type": "assistant", "message": {"content": [{"type": "text", "text": "Sessions are signed."}]}},
     )
     trace = parse_transcript(raw, "/repo", ["src/sessions.py"], vendor="claude-code")
     assert trace["examined"] == {"src/sessions.py": 0.6}
+
+
+def test_reports_claude_login_failure() -> None:
+    raw = _jsonl({"type": "result", "is_error": True, "result": "Not logged in · Please run /login"})
+    try:
+        parse_transcript(raw, "/repo", ["app.py"], vendor="claude-code")
+    except ValueError as error:
+        assert "not logged in" in str(error).lower()
+    else:
+        raise AssertionError("Expected login failure")
