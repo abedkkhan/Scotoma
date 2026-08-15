@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: scotoma-api
+    runtime: docker
+    plan: starter
+    healthCheckPath: /api/health
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: SCOTOMA_ACCESS_TOKEN
+        generateValue: true
+      - key: SCOTOMA_ALLOWED_ORIGINS
+        value: https://abedkkhan.github.io
+      - key: SCOTOMA_MAX_CONCURRENT_JOBS
+        value: "2"

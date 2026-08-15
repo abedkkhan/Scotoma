@@ -196,8 +196,12 @@ Short alternative:
   map, claims, adjudicated evidence cliff, evidence-injection flip, repository
   folder preview, artifact loading, and projector present mode. Real artifacts
   are bundled for static GitHub Pages deployment.
-- Next action: demo rehearsal/pitch, then zero-API ranker evaluation and negative
-  control if time remains.
+- Step 6 backend complete locally: bounded FastAPI repository uploads,
+  asynchronous full-pipeline jobs, polling, CORS/access-token controls,
+  Dockerfile, Render Blueprint, and Pages client integration. Sixteen tests
+  pass.
+- Next action: connect a hosting account, set `OPENAI_API_KEY`, then rehearse
+  live and precomputed fallback demo paths.
 
 ## Working Decisions and Open Questions
 

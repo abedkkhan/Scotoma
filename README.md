@@ -43,5 +43,30 @@ Repository → territory index → bounded agent trace → weighted coverage
 ```
 
 The GitHub Pages frontend is intentionally static: repository-folder previews
-happen locally in the browser, and complete investigations are loaded from CLI
-artifacts. No source code or API keys are sent through the demo site.
+happen locally in the browser. When a Scotoma API URL is configured, the same
+dialog submits the selected source files and question to the hosted pipeline,
+polls all five stages, and renders the resulting investigation. The OpenAI key
+never enters the browser.
+
+## Deploy the live API
+
+[Deploy the Docker service on Render](https://render.com/deploy?repo=https://github.com/abedkkhan/Scotoma)
+
+The included `render.yaml` asks for `OPENAI_API_KEY`, generates a demo access
+token, allows the GitHub Pages origin, and starts `scotoma.server:app`. After
+deployment:
+
+1. copy the service URL into **Upload repo → Scotoma API URL**;
+2. copy `SCOTOMA_ACCESS_TOKEN` into **Demo access token**;
+3. choose a repository folder, enter a question, and run the live audit.
+
+You can also run the API locally:
+
+```bash
+cp .env.example .env
+set -a && source .env && set +a
+.venv/bin/uvicorn scotoma.server:app --reload --port 8000
+```
+
+The API accepts bounded source-file uploads, runs jobs asynchronously, and
+exposes `POST /api/audits`, `GET /api/audits/{id}`, and `GET /api/health`.

@@ -3,3 +3,6 @@ numpy
 jinja2
 rich
 tiktoken
+fastapi
+uvicorn[standard]
+python-multipart

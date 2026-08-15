@@ -156,11 +156,18 @@
         <input id="artifactFiles" type="file" accept="application/json,.json" multiple>
       </label>
     </div>
-    <div id="uploadStatus" class="upload-status">Static GitHub Pages never receives your source or API key.</div>
+    <div class="backend-fields">
+      <label class="question-field"><span>QUESTION ABOUT THIS REPOSITORY</span><input id="uploadQuestion" type="text" placeholder="Where could authentication be bypassed?"></label>
+      <label><span>SCOTOMA API URL</span><input id="apiUrl" type="url" placeholder="https://scotoma-api.onrender.com"></label>
+      <label><span>DEMO ACCESS TOKEN</span><input id="accessToken" type="password" placeholder="Optional unless server requires it"></label>
+    </div>
+    <button id="startLiveAudit" class="live-audit-btn" disabled>Run live repository audit <span>→</span></button>
+    <div id="uploadStatus" class="upload-status">Your API key stays on the backend. Repository files are sent only when you click “Run live repository audit.”</div>
     <pre class="cli-hint">python -m scotoma.cli index ./repo --out index.json</pre>
   </dialog>
 
   <div id="toast" class="toast"></div>
+  <script src="config.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

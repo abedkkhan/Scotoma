@@ -373,8 +373,33 @@ The real Flask artifacts are bundled under `docs/data/`; no demo metric is
 mocked. A GitHub Actions workflow deploys `docs/` to Pages, and the root README
 links to the live experience.
 
+## Step 6 — complete locally
+
+Step 6 added a real hosted execution path instead of limiting the public UI to
+the bundled Flask investigation.
+
+`scotoma/server.py` is a FastAPI service with:
+
+- `POST /api/audits` for a repository folder plus question;
+- asynchronous background execution of all five Scotoma stages;
+- `GET /api/audits/{id}` for stage/progress/result polling;
+- `GET /api/health` for deployment checks;
+- 1,500-file, 30 MB upload, and 400 KB per-file limits by default;
+- path traversal protection and common-root removal;
+- a two-job concurrency ceiling;
+- strict GitHub Pages CORS configuration;
+- optional `SCOTOMA_ACCESS_TOKEN` protection;
+- server-only `OPENAI_API_KEY` handling.
+
+The frontend now sends the selected repository only after explicit confirmation,
+polls indexing/agent/coverage/adjudication/flip progress, and replaces the demo
+with the new repository's real artifacts. A Dockerfile and Render Blueprint are
+included. Sixteen tests pass.
+
+The code is deployable, but the service URL requires connecting a hosting
+account and adding `OPENAI_API_KEY`; GitHub Pages cannot host Python itself.
+
 ## Next step
 
-Rehearse the interactive demo and pitch, then add a zero-API evaluation comparing
-random, semantic-only, composite, and adjudicated ranking plus a negative
-control if time remains.
+Deploy the API through the Render Blueprint, configure its URL/token in the
+frontend, then rehearse the live and fallback demo paths.

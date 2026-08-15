@@ -1,4 +1,4 @@
-const state={index:null,trace:null,coverage:null,adjudication:null,flip:null,audited:false};
+const state={index:null,trace:null,coverage:null,adjudication:null,flip:null,audited:false,selectedRepoFiles:[],repoName:'Flask'};
 const $=(q,r=document)=>r.querySelector(q);const $$=(q,r=document)=>[...r.querySelectorAll(q)];
 const escapeHtml=s=>String(s??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
 const pct=n=>`${Number(n).toFixed(2)}%`;
@@ -59,14 +59,35 @@ $('#runAudit').addEventListener('click',runAudit);$('#injectEvidence').addEventL
 $('#presentBtn').addEventListener('click',()=>{document.body.classList.toggle('present');$('#presentBtn').textContent=document.body.classList.contains('present')?'Exit present mode':'Present mode'});
 
 const dialog=$('#uploadDialog');$('#uploadBtn').addEventListener('click',()=>dialog.showModal());$('#newAudit').addEventListener('click',()=>dialog.showModal());$('.dialog-close').addEventListener('click',()=>dialog.close());
+$('#apiUrl').value=localStorage.getItem('scotomaApiUrl')||window.SCOTOMA_CONFIG?.apiUrl||'';$('#accessToken').value=localStorage.getItem('scotomaAccessToken')||'';
+$('#uploadQuestion').value=$('#questionInput').value;$('#uploadQuestion').addEventListener('input',e=>$('#questionInput').value=e.target.value);
 $('#repoFolder').addEventListener('change',e=>{
-  const files=[...e.target.files];const skip=/(^|\/)(\.git|node_modules|\.venv|dist|build)(\/|$)/;const source=/\.(py|js|jsx|ts|tsx|go|rs|java|rb|php|c|cpp|h|css|html|sql)$/i;const units=files.filter(f=>source.test(f.name)&&!skip.test(f.webkitRelativePath));const locPromise=Promise.all(units.slice(0,250).map(f=>f.text().then(t=>t.split(/\r?\n/).filter(Boolean).length).catch(()=>0)));
-  locPromise.then(lines=>{$('#uploadStatus').innerHTML=`<b>${escapeHtml(files[0]?.webkitRelativePath.split('/')[0]||'Repository')}</b> indexed locally: ${units.length} source files · ${lines.reduce((a,b)=>a+b,0).toLocaleString()} sampled LOC. Generate full agent artifacts with the CLI to audit conclusions.`;toast('Local territory preview ready')});
+  const files=[...e.target.files];const skip=/(^|\/)(\.git|node_modules|\.venv|dist|build)(\/|$)/;const source=/\.(py|js|jsx|ts|tsx|go|rs|java|rb|php|c|cpp|h|css|html|sql|sh|swift|kt|kts|vue|svelte)$/i;const units=files.filter(f=>source.test(f.name)&&!skip.test(f.webkitRelativePath)&&f.size<=400*1024);state.selectedRepoFiles=units;state.repoName=files[0]?.webkitRelativePath.split('/')[0]||'Repository';const locPromise=Promise.all(units.slice(0,250).map(f=>f.text().then(t=>t.split(/\r?\n/).filter(Boolean).length).catch(()=>0)));
+  locPromise.then(lines=>{$('#uploadStatus').innerHTML=`<b>${escapeHtml(state.repoName)}</b> ready: ${units.length} source files · ${lines.reduce((a,b)=>a+b,0).toLocaleString()} sampled LOC. Ask your question below, then run the complete hosted audit.`;$('#startLiveAudit').disabled=!units.length;toast('Repository ready for live audit')});
 });
 $('#artifactFiles').addEventListener('change',async e=>{
   const loaded={};for(const f of e.target.files){try{const data=JSON.parse(await f.text());if(data.units&&'rwc' in data)loaded.coverage=data;else if(data.units)loaded.index=data;else if(data.ranked_candidates)loaded.adjudication=data;else if(data.new_answer)loaded.flip=data;else if(data.examined)loaded.trace=data}catch{toast(`Invalid JSON: ${f.name}`)}}
   Object.assign(state,loaded);if(state.index&&state.trace&&state.coverage&&state.adjudication&&state.flip){renderBase();dialog.close();toast('Investigation artifacts loaded')}else{$('#uploadStatus').textContent=`Loaded ${Object.keys(loaded).join(', ')||'no recognized'} artifacts. Select all five JSON outputs for a complete investigation.`}
 });
+
+$('#startLiveAudit').addEventListener('click',startLiveAudit);
+async function startLiveAudit(){
+  const api=$('#apiUrl').value.trim().replace(/\/$/,'');const token=$('#accessToken').value.trim();const question=$('#uploadQuestion').value.trim();const button=$('#startLiveAudit');
+  if(!api)return setUploadError('Enter the deployed Scotoma API URL.');if(question.length<5)return setUploadError('Enter a specific repository question in the chat box first.');if(!state.selectedRepoFiles.length)return setUploadError('Choose a repository folder first.');
+  localStorage.setItem('scotomaApiUrl',api);if(token)localStorage.setItem('scotomaAccessToken',token);button.disabled=true;button.textContent='Uploading repository…';
+  const form=new FormData();form.append('question',question);state.selectedRepoFiles.forEach(file=>{form.append('files',file,file.name);form.append('paths',file.webkitRelativePath||file.name)});
+  const headers={};if(token)headers['X-Scotoma-Token']=token;
+  try{const response=await fetch(`${api}/api/audits`,{method:'POST',headers,body:form});const body=await response.json().catch(()=>({}));if(!response.ok)throw Error(body.detail||`API returned ${response.status}`);dialog.close();showLiveProgress(body);await pollAudit(api,body.id,headers)}catch(error){setUploadError(error.message);dialog.showModal();button.disabled=false;button.innerHTML='Run live repository audit <span>→</span>'}
+}
+function setUploadError(message){$('#uploadStatus').innerHTML=`<b style="color:var(--red)">Live audit unavailable:</b> ${escapeHtml(message)}`;toast(message)}
+function showLiveProgress(job){
+  state.audited=false;$('#questionText').textContent=$('#questionInput').value.trim();$('#originalAnswer').textContent='Scotoma is mapping the repository and launching a bounded analysis agent…';$('#auditMessage').classList.add('hidden');$('#correctedMessage').classList.add('hidden');
+  $('.history-item b').textContent=`${state.repoName} · live audit`;$('.history-item small').textContent=`${job.file_count} files · queued`;$('#runAudit').disabled=true;$('#runAudit').textContent='Audit running…';toast('Live audit queued')
+}
+async function pollAudit(api,id,headers){
+  const stageLabels={queued:'Queued',indexing:'Mapping territory',agent:'Agent investigating',coverage:'Measuring coverage',adjudication:'Adjudicating claims',flip:'Running flip test'};
+  while(true){await new Promise(r=>setTimeout(r,2200));const response=await fetch(`${api}/api/audits/${id}`,{headers});const job=await response.json().catch(()=>({}));if(!response.ok)throw Error(job.detail||`Polling failed (${response.status})`);$('.history-item small').textContent=`${job.unit_count||job.file_count} files · ${stageLabels[job.stage]||job.stage} ${job.progress}%`;$('#originalAnswer').innerHTML=`<span style="color:var(--acid)">${escapeHtml(stageLabels[job.stage]||job.stage)}</span>\n\nScotoma is running the real agent pipeline. This can take a few minutes on a new repository.\n\n${'▓'.repeat(Math.round(job.progress/5))}${'░'.repeat(20-Math.round(job.progress/5))} ${job.progress}%`;if(job.status==='failed')throw Error(job.error||'Audit failed');if(job.status==='complete'){Object.assign(state,job.result,{audited:true});renderBase();$('#auditMessage').classList.remove('hidden');$('#correctedMessage').classList.remove('hidden');$('#runAudit').disabled=false;$('#runAudit').innerHTML='Audit complete <span>✓</span>';$('.history-item small').textContent=`${state.coverage.unit_count} files · completed`;activateTab('evidence');toast('Live Scotoma audit complete');break}}
+}
 
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&dialog.open)dialog.close();if(e.key.toLowerCase()==='p'&&!['INPUT','TEXTAREA'].includes(e.target.tagName))$('#presentBtn').click()});
 loadDemo();
