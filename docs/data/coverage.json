@@ -1,0 +1,991 @@
+{
+  "rwc": 0.05505946,
+  "rwc_percent": 5.51,
+  "naive_file_coverage": 0.06481481,
+  "naive_file_coverage_percent": 6.48,
+  "examined_unit_count": 7,
+  "unit_count": 108,
+  "embedding_model": "text-embedding-3-small",
+  "weights": {
+    "semantic": 0.4,
+    "structural": 0.25,
+    "lexical": 0.35
+  },
+  "embedding_api_calls": 0,
+  "dependency_edges": 139,
+  "structural_nonzero_units": 71,
+  "units": [
+    {
+      "path": "src/flask/testing.py",
+      "sem": 0.582859,
+      "struct": 0.5,
+      "lex": 0.333333,
+      "relevance": 0.47481,
+      "depth": 0.0,
+      "blind_risk": 0.47481
+    },
+    {
+      "path": "src/flask/helpers.py",
+      "sem": 0.618557,
+      "struct": 0.5,
+      "lex": 0.166667,
+      "relevance": 0.430756,
+      "depth": 0.0,
+      "blind_risk": 0.430756
+    },
+    {
+      "path": "src/flask/signals.py",
+      "sem": 0.754164,
+      "struct": 0.25,
+      "lex": 0.166667,
+      "relevance": 0.422499,
+      "depth": 0.0,
+      "blind_risk": 0.422499
+    },
+    {
+      "path": "src/flask/ctx.py",
+      "sem": 0.429758,
+      "struct": 0.5,
+      "lex": 0.333333,
+      "relevance": 0.41357,
+      "depth": 0.0,
+      "blind_risk": 0.41357
+    },
+    {
+      "path": "src/flask/app.py",
+      "sem": 0.562815,
+      "struct": 0.5,
+      "lex": 0.166667,
+      "relevance": 0.408459,
+      "depth": 0.0,
+      "blind_risk": 0.408459
+    },
+    {
+      "path": "src/flask/logging.py",
+      "sem": 0.523392,
+      "struct": 0.5,
+      "lex": 0.166667,
+      "relevance": 0.39269,
+      "depth": 0.0,
+      "blind_risk": 0.39269
+    },
+    {
+      "path": "src/flask/cli.py",
+      "sem": 0.526059,
+      "struct": 0.25,
+      "lex": 0.333333,
+      "relevance": 0.38959,
+      "depth": 0.0,
+      "blind_risk": 0.38959
+    },
+    {
+      "path": "src/flask/debughelpers.py",
+      "sem": 0.503373,
+      "struct": 0.5,
+      "lex": 0.166667,
+      "relevance": 0.384682,
+      "depth": 0.0,
+      "blind_risk": 0.384682
+    },
+    {
+      "path": "examples/tutorial/flaskr/auth.py",
+      "sem": 0.733571,
+      "struct": 0.125,
+      "lex": 0.166667,
+      "relevance": 0.383012,
+      "depth": 0.0,
+      "blind_risk": 0.383012
+    },
+    {
+      "path": "src/flask/json/tag.py",
+      "sem": 0.671185,
+      "struct": 0.5,
+      "lex": 0.333333,
+      "relevance": 0.510141,
+      "depth": 0.25,
+      "blind_risk": 0.382606
+    },
+    {
+      "path": "tests/test_session_interface.py",
+      "sem": 0.492349,
+      "struct": 0.5,
+      "lex": 0.166667,
+      "relevance": 0.380273,
+      "depth": 0.0,
+      "blind_risk": 0.380273
+    },
+    {
+      "path": "src/flask/sansio/scaffold.py",
+      "sem": 0.473153,
+      "struct": 0.5,
+      "lex": 0.166667,
+      "relevance": 0.372595,
+      "depth": 0.0,
+      "blind_risk": 0.372595
+    },
+    {
+      "path": "src/flask/__init__.py",
+      "sem": 0.599734,
+      "struct": 0.25,
+      "lex": 0.166667,
+      "relevance": 0.360727,
+      "depth": 0.0,
+      "blind_risk": 0.360727
+    },
+    {
+      "path": "src/flask/typing.py",
+      "sem": 0.430814,
+      "struct": 0.5,
+      "lex": 0.166667,
+      "relevance": 0.355659,
+      "depth": 0.0,
+      "blind_risk": 0.355659
+    },
+    {
+      "path": "src/flask/config.py",
+      "sem": 0.37231,
+      "struct": 0.5,
+      "lex": 0.166667,
+      "relevance": 0.332257,
+      "depth": 0.0,
+      "blind_risk": 0.332257
+    },
+    {
+      "path": "src/flask/sessions.py",
+      "sem": 1.0,
+      "struct": 1.0,
+      "lex": 0.5,
+      "relevance": 0.825,
+      "depth": 0.6,
+      "blind_risk": 0.33
+    },
+    {
+      "path": "src/flask/wrappers.py",
+      "sem": 0.514993,
+      "struct": 0.25,
+      "lex": 0.166667,
+      "relevance": 0.32683,
+      "depth": 0.0,
+      "blind_risk": 0.32683
+    },
+    {
+      "path": "src/flask/globals.py",
+      "sem": 0.514318,
+      "struct": 0.25,
+      "lex": 0.166667,
+      "relevance": 0.326561,
+      "depth": 0.0,
+      "blind_risk": 0.326561
+    },
+    {
+      "path": "src/flask/__main__.py",
+      "sem": 0.588473,
+      "struct": 0.125,
+      "lex": 0.166667,
+      "relevance": 0.324973,
+      "depth": 0.0,
+      "blind_risk": 0.324973
+    },
+    {
+      "path": "src/flask/json/__init__.py",
+      "sem": 0.494636,
+      "struct": 0.25,
+      "lex": 0.166667,
+      "relevance": 0.318688,
+      "depth": 0.0,
+      "blind_risk": 0.318688
+    },
+    {
+      "path": "src/flask/templating.py",
+      "sem": 0.337495,
+      "struct": 0.5,
+      "lex": 0.166667,
+      "relevance": 0.318331,
+      "depth": 0.0,
+      "blind_risk": 0.318331
+    },
+    {
+      "path": "tests/test_apps/cliapp/inner1/inner2/flask.py",
+      "sem": 0.541897,
+      "struct": 0.125,
+      "lex": 0.166667,
+      "relevance": 0.306342,
+      "depth": 0.0,
+      "blind_risk": 0.306342
+    },
+    {
+      "path": "src/flask/json/provider.py",
+      "sem": 0.297165,
+      "struct": 0.5,
+      "lex": 0.166667,
+      "relevance": 0.302199,
+      "depth": 0.0,
+      "blind_risk": 0.302199
+    },
+    {
+      "path": "examples/tutorial/flaskr/templates/auth/register.html",
+      "sem": 0.740144,
+      "struct": 0.0,
+      "lex": 0.0,
+      "relevance": 0.296058,
+      "depth": 0.0,
+      "blind_risk": 0.296058
+    },
+    {
+      "path": "examples/tutorial/tests/test_auth.py",
+      "sem": 0.514222,
+      "struct": 0.125,
+      "lex": 0.166667,
+      "relevance": 0.295272,
+      "depth": 0.0,
+      "blind_risk": 0.295272
+    },
+    {
+      "path": "src/flask/blueprints.py",
+      "sem": 0.429113,
+      "struct": 0.25,
+      "lex": 0.166667,
+      "relevance": 0.292478,
+      "depth": 0.0,
+      "blind_risk": 0.292478
+    },
+    {
+      "path": "src/flask/sansio/blueprints.py",
+      "sem": 0.428673,
+      "struct": 0.25,
+      "lex": 0.166667,
+      "relevance": 0.292303,
+      "depth": 0.0,
+      "blind_risk": 0.292303
+    },
+    {
+      "path": "examples/tutorial/flaskr/templates/auth/login.html",
+      "sem": 0.727898,
+      "struct": 0.0,
+      "lex": 0.0,
+      "relevance": 0.291159,
+      "depth": 0.0,
+      "blind_risk": 0.291159
+    },
+    {
+      "path": "tests/test_testing.py",
+      "sem": 0.26184,
+      "struct": 0.25,
+      "lex": 0.333333,
+      "relevance": 0.283903,
+      "depth": 0.0,
+      "blind_risk": 0.283903
+    },
+    {
+      "path": "examples/tutorial/flaskr/__init__.py",
+      "sem": 0.418299,
+      "struct": 0.125,
+      "lex": 0.166667,
+      "relevance": 0.256903,
+      "depth": 0.0,
+      "blind_risk": 0.256903
+    },
+    {
+      "path": "tests/test_helpers.py",
+      "sem": 0.300879,
+      "struct": 0.25,
+      "lex": 0.166667,
+      "relevance": 0.241185,
+      "depth": 0.0,
+      "blind_risk": 0.241185
+    },
+    {
+      "path": "tests/test_reqctx.py",
+      "sem": 0.337532,
+      "struct": 0.5,
+      "lex": 0.166667,
+      "relevance": 0.318346,
+      "depth": 0.25,
+      "blind_risk": 0.23876
+    },
+    {
+      "path": "examples/tutorial/flaskr/db.py",
+      "sem": 0.362333,
+      "struct": 0.125,
+      "lex": 0.166667,
+      "relevance": 0.234517,
+      "depth": 0.0,
+      "blind_risk": 0.234517
+    },
+    {
+      "path": "src/flask/views.py",
+      "sem": 0.235403,
+      "struct": 0.25,
+      "lex": 0.166667,
+      "relevance": 0.214994,
+      "depth": 0.0,
+      "blind_risk": 0.214994
+    },
+    {
+      "path": "src/flask/sansio/app.py",
+      "sem": 0.503825,
+      "struct": 1.0,
+      "lex": 0.166667,
+      "relevance": 0.509863,
+      "depth": 0.6,
+      "blind_risk": 0.203945
+    },
+    {
+      "path": "examples/tutorial/flaskr/blog.py",
+      "sem": 0.408345,
+      "struct": 0.125,
+      "lex": 0.0,
+      "relevance": 0.194588,
+      "depth": 0.0,
+      "blind_risk": 0.194588
+    },
+    {
+      "path": "tests/test_request.py",
+      "sem": 0.320775,
+      "struct": 0.25,
+      "lex": 0.0,
+      "relevance": 0.19081,
+      "depth": 0.0,
+      "blind_risk": 0.19081
+    },
+    {
+      "path": "tests/test_logging.py",
+      "sem": 0.31823,
+      "struct": 0.25,
+      "lex": 0.0,
+      "relevance": 0.189792,
+      "depth": 0.0,
+      "blind_risk": 0.189792
+    },
+    {
+      "path": "examples/tutorial/flaskr/templates/blog/index.html",
+      "sem": 0.470269,
+      "struct": 0.0,
+      "lex": 0.0,
+      "relevance": 0.188107,
+      "depth": 0.0,
+      "blind_risk": 0.188107
+    },
+    {
+      "path": "tests/test_appctx.py",
+      "sem": 0.307283,
+      "struct": 0.25,
+      "lex": 0.0,
+      "relevance": 0.185413,
+      "depth": 0.0,
+      "blind_risk": 0.185413
+    },
+    {
+      "path": "tests/test_basic.py",
+      "sem": 0.302577,
+      "struct": 0.25,
+      "lex": 0.166667,
+      "relevance": 0.241864,
+      "depth": 0.25,
+      "blind_risk": 0.181398
+    },
+    {
+      "path": "tests/test_signals.py",
+      "sem": 0.37012,
+      "struct": 0.125,
+      "lex": 0.0,
+      "relevance": 0.179298,
+      "depth": 0.0,
+      "blind_risk": 0.179298
+    },
+    {
+      "path": "examples/tutorial/flaskr/templates/blog/create.html",
+      "sem": 0.440601,
+      "struct": 0.0,
+      "lex": 0.0,
+      "relevance": 0.17624,
+      "depth": 0.0,
+      "blind_risk": 0.17624
+    },
+    {
+      "path": "examples/tutorial/flaskr/templates/blog/update.html",
+      "sem": 0.436649,
+      "struct": 0.0,
+      "lex": 0.0,
+      "relevance": 0.17466,
+      "depth": 0.0,
+      "blind_risk": 0.17466
+    },
+    {
+      "path": "examples/tutorial/tests/conftest.py",
+      "sem": 0.419117,
+      "struct": 0.0,
+      "lex": 0.0,
+      "relevance": 0.167647,
+      "depth": 0.0,
+      "blind_risk": 0.167647
+    },
+    {
+      "path": "examples/tutorial/tests/test_blog.py",
+      "sem": 0.27268,
+      "struct": 0.0,
+      "lex": 0.166667,
+      "relevance": 0.167405,
+      "depth": 0.0,
+      "blind_risk": 0.167405
+    },
+    {
+      "path": "examples/tutorial/flaskr/templates/base.html",
+      "sem": 0.414982,
+      "struct": 0.0,
+      "lex": 0.0,
+      "relevance": 0.165993,
+      "depth": 0.0,
+      "blind_risk": 0.165993
+    },
+    {
+      "path": "examples/tutorial/flaskr/schema.sql",
+      "sem": 0.403227,
+      "struct": 0.0,
+      "lex": 0.0,
+      "relevance": 0.161291,
+      "depth": 0.0,
+      "blind_risk": 0.161291
+    },
+    {
+      "path": "tests/conftest.py",
+      "sem": 0.316016,
+      "struct": 0.125,
+      "lex": 0.0,
+      "relevance": 0.157656,
+      "depth": 0.0,
+      "blind_risk": 0.157656
+    },
+    {
+      "path": "examples/tutorial/flaskr/static/style.css",
+      "sem": 0.390254,
+      "struct": 0.0,
+      "lex": 0.0,
+      "relevance": 0.156102,
+      "depth": 0.0,
+      "blind_risk": 0.156102
+    },
+    {
+      "path": "tests/test_apps/cliapp/app.py",
+      "sem": 0.306286,
+      "struct": 0.125,
+      "lex": 0.0,
+      "relevance": 0.153764,
+      "depth": 0.0,
+      "blind_risk": 0.153764
+    },
+    {
+      "path": "tests/test_json.py",
+      "sem": 0.224782,
+      "struct": 0.25,
+      "lex": 0.0,
+      "relevance": 0.152413,
+      "depth": 0.0,
+      "blind_risk": 0.152413
+    },
+    {
+      "path": "tests/test_apps/cliapp/inner1/__init__.py",
+      "sem": 0.275054,
+      "struct": 0.125,
+      "lex": 0.0,
+      "relevance": 0.141272,
+      "depth": 0.0,
+      "blind_risk": 0.141272
+    },
+    {
+      "path": "tests/test_async.py",
+      "sem": 0.273155,
+      "struct": 0.125,
+      "lex": 0.0,
+      "relevance": 0.140512,
+      "depth": 0.0,
+      "blind_risk": 0.140512
+    },
+    {
+      "path": "examples/javascript/js_example/__init__.py",
+      "sem": 0.264258,
+      "struct": 0.125,
+      "lex": 0.0,
+      "relevance": 0.136953,
+      "depth": 0.0,
+      "blind_risk": 0.136953
+    },
+    {
+      "path": "tests/test_subclassing.py",
+      "sem": 0.259622,
+      "struct": 0.125,
+      "lex": 0.0,
+      "relevance": 0.135099,
+      "depth": 0.0,
+      "blind_risk": 0.135099
+    },
+    {
+      "path": "tests/type_check/typing_route.py",
+      "sem": 0.173919,
+      "struct": 0.25,
+      "lex": 0.0,
+      "relevance": 0.132068,
+      "depth": 0.0,
+      "blind_risk": 0.132068
+    },
+    {
+      "path": "examples/javascript/tests/conftest.py",
+      "sem": 0.327054,
+      "struct": 0.0,
+      "lex": 0.0,
+      "relevance": 0.130821,
+      "depth": 0.0,
+      "blind_risk": 0.130821
+    },
+    {
+      "path": "tests/test_cli.py",
+      "sem": 0.24796,
+      "struct": 0.125,
+      "lex": 0.0,
+      "relevance": 0.130434,
+      "depth": 0.0,
+      "blind_risk": 0.130434
+    },
+    {
+      "path": "tests/test_apps/subdomaintestmodule/__init__.py",
+      "sem": 0.24563,
+      "struct": 0.125,
+      "lex": 0.0,
+      "relevance": 0.129502,
+      "depth": 0.0,
+      "blind_risk": 0.129502
+    },
+    {
+      "path": "tests/test_config.py",
+      "sem": 0.205311,
+      "struct": 0.125,
+      "lex": 0.166667,
+      "relevance": 0.171708,
+      "depth": 0.25,
+      "blind_risk": 0.128781
+    },
+    {
+      "path": "examples/javascript/js_example/templates/xhr.html",
+      "sem": 0.311485,
+      "struct": 0.0,
+      "lex": 0.0,
+      "relevance": 0.124594,
+      "depth": 0.0,
+      "blind_risk": 0.124594
+    },
+    {
+      "path": "tests/test_apps/blueprintapp/__init__.py",
+      "sem": 0.231158,
+      "struct": 0.125,
+      "lex": 0.0,
+      "relevance": 0.123713,
+      "depth": 0.0,
+      "blind_risk": 0.123713
+    },
+    {
+      "path": "tests/test_apps/cliapp/factory.py",
+      "sem": 0.224749,
+      "struct": 0.125,
+      "lex": 0.0,
+      "relevance": 0.121149,
+      "depth": 0.0,
+      "blind_risk": 0.121149
+    },
+    {
+      "path": "tests/test_apps/cliapp/multiapp.py",
+      "sem": 0.224286,
+      "struct": 0.125,
+      "lex": 0.0,
+      "relevance": 0.120965,
+      "depth": 0.0,
+      "blind_risk": 0.120965
+    },
+    {
+      "path": "examples/celery/src/task_app/__init__.py",
+      "sem": 0.222586,
+      "struct": 0.125,
+      "lex": 0.0,
+      "relevance": 0.120284,
+      "depth": 0.0,
+      "blind_risk": 0.120284
+    },
+    {
+      "path": "tests/test_apps/blueprintapp/apps/frontend/__init__.py",
+      "sem": 0.22238,
+      "struct": 0.125,
+      "lex": 0.0,
+      "relevance": 0.120202,
+      "depth": 0.0,
+      "blind_risk": 0.120202
+    },
+    {
+      "path": "tests/test_apps/cliapp/importerrorapp.py",
+      "sem": 0.221777,
+      "struct": 0.125,
+      "lex": 0.0,
+      "relevance": 0.119961,
+      "depth": 0.0,
+      "blind_risk": 0.119961
+    },
+    {
+      "path": "examples/javascript/js_example/views.py",
+      "sem": 0.219708,
+      "struct": 0.125,
+      "lex": 0.0,
+      "relevance": 0.119133,
+      "depth": 0.0,
+      "blind_risk": 0.119133
+    },
+    {
+      "path": "tests/test_json_tag.py",
+      "sem": 0.14125,
+      "struct": 0.25,
+      "lex": 0.0,
+      "relevance": 0.119,
+      "depth": 0.0,
+      "blind_risk": 0.119
+    },
+    {
+      "path": "tests/type_check/typing_error_handler.py",
+      "sem": 0.213007,
+      "struct": 0.125,
+      "lex": 0.0,
+      "relevance": 0.116453,
+      "depth": 0.0,
+      "blind_risk": 0.116453
+    },
+    {
+      "path": "tests/test_apps/cliapp/__init__.py",
+      "sem": 0.280619,
+      "struct": 0.0,
+      "lex": 0.0,
+      "relevance": 0.112248,
+      "depth": 0.0,
+      "blind_risk": 0.112248
+    },
+    {
+      "path": "tests/test_blueprints.py",
+      "sem": 0.199862,
+      "struct": 0.125,
+      "lex": 0.0,
+      "relevance": 0.111195,
+      "depth": 0.0,
+      "blind_risk": 0.111195
+    },
+    {
+      "path": "tests/test_apps/helloworld/wsgi.py",
+      "sem": 0.269701,
+      "struct": 0.0,
+      "lex": 0.0,
+      "relevance": 0.107881,
+      "depth": 0.0,
+      "blind_risk": 0.107881
+    },
+    {
+      "path": "tests/test_apps/blueprintapp/apps/admin/__init__.py",
+      "sem": 0.181,
+      "struct": 0.125,
+      "lex": 0.0,
+      "relevance": 0.10365,
+      "depth": 0.0,
+      "blind_risk": 0.10365
+    },
+    {
+      "path": "tests/test_apps/cliapp/inner1/inner2/__init__.py",
+      "sem": 0.254604,
+      "struct": 0.0,
+      "lex": 0.0,
+      "relevance": 0.101842,
+      "depth": 0.0,
+      "blind_risk": 0.101842
+    },
+    {
+      "path": "tests/test_user_error_handler.py",
+      "sem": 0.174899,
+      "struct": 0.125,
+      "lex": 0.0,
+      "relevance": 0.101209,
+      "depth": 0.0,
+      "blind_risk": 0.101209
+    },
+    {
+      "path": "examples/javascript/js_example/templates/fetch.html",
+      "sem": 0.252243,
+      "struct": 0.0,
+      "lex": 0.0,
+      "relevance": 0.100897,
+      "depth": 0.0,
+      "blind_risk": 0.100897
+    },
+    {
+      "path": "examples/javascript/tests/test_js_example.py",
+      "sem": 0.167675,
+      "struct": 0.125,
+      "lex": 0.0,
+      "relevance": 0.09832,
+      "depth": 0.0,
+      "blind_risk": 0.09832
+    },
+    {
+      "path": "examples/celery/src/task_app/views.py",
+      "sem": 0.161654,
+      "struct": 0.125,
+      "lex": 0.0,
+      "relevance": 0.095911,
+      "depth": 0.0,
+      "blind_risk": 0.095911
+    },
+    {
+      "path": "tests/test_views.py",
+      "sem": 0.081345,
+      "struct": 0.25,
+      "lex": 0.0,
+      "relevance": 0.095038,
+      "depth": 0.0,
+      "blind_risk": 0.095038
+    },
+    {
+      "path": "examples/tutorial/tests/test_factory.py",
+      "sem": 0.235957,
+      "struct": 0.0,
+      "lex": 0.0,
+      "relevance": 0.094383,
+      "depth": 0.0,
+      "blind_risk": 0.094383
+    },
+    {
+      "path": "tests/templates/escaping_template.html",
+      "sem": 0.232587,
+      "struct": 0.0,
+      "lex": 0.0,
+      "relevance": 0.093035,
+      "depth": 0.0,
+      "blind_risk": 0.093035
+    },
+    {
+      "path": "tests/test_apps/blueprintapp/apps/__init__.py",
+      "sem": 0.230557,
+      "struct": 0.0,
+      "lex": 0.0,
+      "relevance": 0.092223,
+      "depth": 0.0,
+      "blind_risk": 0.092223
+    },
+    {
+      "path": "tests/test_templating.py",
+      "sem": 0.150803,
+      "struct": 0.125,
+      "lex": 0.0,
+      "relevance": 0.091571,
+      "depth": 0.0,
+      "blind_risk": 0.091571
+    },
+    {
+      "path": "docs/conf.py",
+      "sem": 0.290239,
+      "struct": 0.0,
+      "lex": 0.0,
+      "relevance": 0.116096,
+      "depth": 0.25,
+      "blind_risk": 0.087072
+    },
+    {
+      "path": "tests/test_instance_config.py",
+      "sem": 0.134258,
+      "struct": 0.125,
+      "lex": 0.0,
+      "relevance": 0.084953,
+      "depth": 0.0,
+      "blind_risk": 0.084953
+    },
+    {
+      "path": "examples/celery/src/task_app/tasks.py",
+      "sem": 0.211692,
+      "struct": 0.0,
+      "lex": 0.0,
+      "relevance": 0.084677,
+      "depth": 0.0,
+      "blind_risk": 0.084677
+    },
+    {
+      "path": "examples/celery/src/task_app/templates/index.html",
+      "sem": 0.203745,
+      "struct": 0.0,
+      "lex": 0.0,
+      "relevance": 0.081498,
+      "depth": 0.0,
+      "blind_risk": 0.081498
+    },
+    {
+      "path": "tests/test_apps/helloworld/hello.py",
+      "sem": 0.125565,
+      "struct": 0.125,
+      "lex": 0.0,
+      "relevance": 0.081476,
+      "depth": 0.0,
+      "blind_risk": 0.081476
+    },
+    {
+      "path": "examples/javascript/js_example/templates/jquery.html",
+      "sem": 0.200241,
+      "struct": 0.0,
+      "lex": 0.0,
+      "relevance": 0.080096,
+      "depth": 0.0,
+      "blind_risk": 0.080096
+    },
+    {
+      "path": "tests/test_regression.py",
+      "sem": 0.118225,
+      "struct": 0.125,
+      "lex": 0.0,
+      "relevance": 0.07854,
+      "depth": 0.0,
+      "blind_risk": 0.07854
+    },
+    {
+      "path": "tests/type_check/typing_app_decorators.py",
+      "sem": 0.116775,
+      "struct": 0.125,
+      "lex": 0.0,
+      "relevance": 0.07796,
+      "depth": 0.0,
+      "blind_risk": 0.07796
+    },
+    {
+      "path": "tests/test_converters.py",
+      "sem": 0.088949,
+      "struct": 0.125,
+      "lex": 0.0,
+      "relevance": 0.06683,
+      "depth": 0.0,
+      "blind_risk": 0.06683
+    },
+    {
+      "path": "examples/celery/make_celery.py",
+      "sem": 0.161885,
+      "struct": 0.0,
+      "lex": 0.0,
+      "relevance": 0.064754,
+      "depth": 0.0,
+      "blind_risk": 0.064754
+    },
+    {
+      "path": "tests/templates/context_template.html",
+      "sem": 0.156106,
+      "struct": 0.0,
+      "lex": 0.0,
+      "relevance": 0.062442,
+      "depth": 0.0,
+      "blind_risk": 0.062442
+    },
+    {
+      "path": "tests/static/index.html",
+      "sem": 0.144207,
+      "struct": 0.0,
+      "lex": 0.0,
+      "relevance": 0.057683,
+      "depth": 0.0,
+      "blind_risk": 0.057683
+    },
+    {
+      "path": "tests/test_apps/blueprintapp/apps/frontend/templates/frontend/index.html",
+      "sem": 0.135749,
+      "struct": 0.0,
+      "lex": 0.0,
+      "relevance": 0.0543,
+      "depth": 0.0,
+      "blind_risk": 0.0543
+    },
+    {
+      "path": "tests/test_apps/blueprintapp/apps/admin/templates/admin/index.html",
+      "sem": 0.120638,
+      "struct": 0.0,
+      "lex": 0.0,
+      "relevance": 0.048255,
+      "depth": 0.0,
+      "blind_risk": 0.048255
+    },
+    {
+      "path": "tests/templates/template_test.html",
+      "sem": 0.101191,
+      "struct": 0.0,
+      "lex": 0.0,
+      "relevance": 0.040476,
+      "depth": 0.0,
+      "blind_risk": 0.040476
+    },
+    {
+      "path": "tests/test_apps/blueprintapp/apps/admin/static/css/test.css",
+      "sem": 0.096195,
+      "struct": 0.0,
+      "lex": 0.0,
+      "relevance": 0.038478,
+      "depth": 0.0,
+      "blind_risk": 0.038478
+    },
+    {
+      "path": "tests/templates/simple_template.html",
+      "sem": 0.092494,
+      "struct": 0.0,
+      "lex": 0.0,
+      "relevance": 0.036998,
+      "depth": 0.0,
+      "blind_risk": 0.036998
+    },
+    {
+      "path": "examples/javascript/js_example/templates/base.html",
+      "sem": 0.086703,
+      "struct": 0.0,
+      "lex": 0.0,
+      "relevance": 0.034681,
+      "depth": 0.0,
+      "blind_risk": 0.034681
+    },
+    {
+      "path": ".devcontainer/on-create-command.sh",
+      "sem": 0.076094,
+      "struct": 0.0,
+      "lex": 0.0,
+      "relevance": 0.030438,
+      "depth": 0.0,
+      "blind_risk": 0.030438
+    },
+    {
+      "path": "tests/templates/template_filter.html",
+      "sem": 0.068922,
+      "struct": 0.0,
+      "lex": 0.0,
+      "relevance": 0.027569,
+      "depth": 0.0,
+      "blind_risk": 0.027569
+    },
+    {
+      "path": "tests/templates/_macro.html",
+      "sem": 0.043283,
+      "struct": 0.0,
+      "lex": 0.0,
+      "relevance": 0.017313,
+      "depth": 0.0,
+      "blind_risk": 0.017313
+    },
+    {
+      "path": "examples/tutorial/tests/test_db.py",
+      "sem": 0.009441,
+      "struct": 0.0,
+      "lex": 0.0,
+      "relevance": 0.003776,
+      "depth": 0.0,
+      "blind_risk": 0.003776
+    },
+    {
+      "path": "examples/tutorial/tests/data.sql",
+      "sem": 0.0,
+      "struct": 0.0,
+      "lex": 0.0,
+      "relevance": 0.0,
+      "depth": 0.0,
+      "blind_risk": 0.0
+    }
+  ]
+}

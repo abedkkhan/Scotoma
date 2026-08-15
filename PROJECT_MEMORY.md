@@ -192,7 +192,12 @@ Short alternative:
   “confidential/decrypted” to “signed but readable; integrity/authenticity, not
   confidentiality” after the top evidence was preloaded.
 - Transcript adapters are dropped from hackathon scope.
-- Next action: polished terminal/HTML report, then demo rehearsal and pitch.
+- Step 5 frontend complete: chat-led interactive investigation, dark evidence
+  map, claims, adjudicated evidence cliff, evidence-injection flip, repository
+  folder preview, artifact loading, and projector present mode. Real artifacts
+  are bundled for static GitHub Pages deployment.
+- Next action: demo rehearsal/pitch, then zero-API ranker evaluation and negative
+  control if time remains.
 
 ## Working Decisions and Open Questions
 

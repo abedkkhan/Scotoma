@@ -1,0 +1,72 @@
+const state={index:null,trace:null,coverage:null,adjudication:null,flip:null,audited:false};
+const $=(q,r=document)=>r.querySelector(q);const $$=(q,r=document)=>[...r.querySelectorAll(q)];
+const escapeHtml=s=>String(s??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+const pct=n=>`${Number(n).toFixed(2)}%`;
+
+async function loadDemo(){
+  const names=['index','trace','coverage','adjudication','flip'];
+  try{const values=await Promise.all(names.map(n=>fetch(`data/${n}.json`).then(r=>{if(!r.ok)throw Error(n);return r.json()})));names.forEach((n,i)=>state[n]=values[i]);renderBase();}
+  catch(e){toast(`Could not load demo data: ${e.message}`);}
+}
+
+function renderBase(){
+  $('#questionText').textContent=state.trace.question;$('#questionInput').value=state.trace.question;$('#agentModel').textContent=state.trace.model.toUpperCase();
+  $('#originalAnswer').innerHTML=highlightBefore(state.trace.answer);$('#correctedAnswer').innerHTML=highlightAfter(state.flip.new_answer);
+  $('#changeSummary').textContent=state.flip.comparison.summary;
+  $('#rwcMetric').textContent=pct(state.coverage.rwc_percent);$('#naiveMetric').textContent=pct(state.coverage.naive_file_coverage_percent);
+  const full=Object.values(state.trace.examined).filter(v=>v===1).length;$('#fullReadMetric').textContent=String(full);
+  renderMap();renderClaims();renderEvidence();
+}
+
+function highlightBefore(text){let s=escapeHtml(text);['confidentiality and integrity','can be decrypted'].forEach(p=>{s=s.replaceAll(p,`<mark>${p}</mark>`)});return s;}
+function highlightAfter(text){let s=escapeHtml(text);['not encrypted','readable by clients','integrity and authenticity','not confidentiality'].forEach(p=>{s=s.replaceAll(p,`<mark>${p}</mark>`)});return s;}
+
+function renderMap(){
+  const root=$('#coverageMap');root.innerHTML='';const verdicts=new Map(state.adjudication.ranked_candidates.map(x=>[x.path,x.verdict]));
+  const units=[...state.coverage.units].sort((a,b)=>b.relevance-a.relevance);
+  units.forEach(u=>{const el=document.createElement('div');const size=u.relevance>.68?3:u.relevance>.47?2:1;const depth=u.depth>=1?100:u.depth>=.6?60:u.depth>=.25?25:0;const verdict=verdicts.get(u.path)||'unreviewed';el.className=`tile size-${size} depth-${depth} ${verdict==='contradicts'?'contradicts':''}`;el.dataset.tip=`${u.path}\nrelevance ${u.relevance.toFixed(3)} · depth ${u.depth.toFixed(2)}\n${verdict}`;el.setAttribute('aria-label',el.dataset.tip);root.appendChild(el)});
+  $('#mapFiles').textContent=`${state.coverage.unit_count} files`;$('#mapTouched').textContent=`${state.coverage.examined_unit_count} examined`;$('#mapContradictions').textContent=`${state.adjudication.ranked_candidates.filter(x=>x.verdict==='contradicts').length} contradictions`;
+}
+
+function renderClaims(){
+  const contradicted=new Set(state.adjudication.ranked_candidates.filter(x=>x.verdict==='contradicts').map(x=>x.target_claim_id));
+  $('#claimsList').innerHTML=state.adjudication.claims.map(c=>`<article class="claim-card"><span class="claim-id">${escapeHtml(c.id)}</span><p>${escapeHtml(c.text)}</p><span class="tag ${contradicted.has(c.id)?'contradicted':''}">${contradicted.has(c.id)?'CONTRADICTED':'UNTESTED'}</span></article>`).join('');
+}
+
+function renderEvidence(){
+  $('#evidenceList').innerHTML=state.adjudication.ranked_candidates.map((x,i)=>`<article class="evidence-row ${x.verdict}"><div><b>${String(i+1).padStart(2,'0')} · ${escapeHtml(x.path)}</b><small>${escapeHtml(x.reason)}</small><span class="tag ${x.verdict==='contradicts'?'contradicted':''}">${escapeHtml(x.verdict.toUpperCase())}</span></div><span class="evidence-score">${x.adjudicated_risk.toFixed(3)}</span><div class="evidence-bar"><i style="width:${Math.max(1,x.adjudicated_risk/0.54*100)}%"></i></div></article>`).join('');
+}
+
+function runAudit(){
+  if(!state.coverage)return;state.audited=true;const btn=$('#runAudit');btn.disabled=true;btn.innerHTML='Tracing agent <span>···</span>';
+  setTimeout(()=>{btn.innerHTML='Measuring coverage <span>···</span>'},650);
+  setTimeout(()=>{btn.innerHTML='Adjudicating claims <span>···</span>'},1300);
+  setTimeout(()=>{$('#auditMessage').classList.remove('hidden');btn.innerHTML='Audit complete <span>✓</span>';activateTab('coverage');$('#auditMessage').scrollIntoView({behavior:'smooth',block:'center'});toast('Blind spot detected · 5.51% coverage')},2100);
+}
+
+function injectEvidence(){
+  if(!state.audited){runAudit();setTimeout(injectEvidence,2300);return}
+  const btn=$('#injectEvidence');btn.disabled=true;btn.textContent='Injecting json/tag.py + sessions.py…';
+  setTimeout(()=>{$('#correctedMessage').classList.remove('hidden');btn.innerHTML='Conclusion changed <span>✓</span>';$('#correctedMessage').scrollIntoView({behavior:'smooth',block:'center'});toast('The agent corrected its security claim')},1200);
+}
+
+function activateTab(name){$$('.inspector-tabs button').forEach(b=>b.classList.toggle('active',b.dataset.tab===name));$$('.tab-panel').forEach(p=>p.classList.remove('active'));$(`#${name}Panel`).classList.add('active')}
+function toast(msg){const el=$('#toast');el.textContent=msg;el.classList.add('show');clearTimeout(toast.timer);toast.timer=setTimeout(()=>el.classList.remove('show'),2800)}
+
+$$('.inspector-tabs button').forEach(b=>b.addEventListener('click',()=>activateTab(b.dataset.tab)));
+$$('.expand-answer').forEach(b=>b.addEventListener('click',()=>{const a=b.previousElementSibling;a.classList.toggle('clamp');b.textContent=a.classList.contains('clamp')?'Show full answer ↓':'Collapse answer ↑'}));
+$('#runAudit').addEventListener('click',runAudit);$('#injectEvidence').addEventListener('click',injectEvidence);
+$('#presentBtn').addEventListener('click',()=>{document.body.classList.toggle('present');$('#presentBtn').textContent=document.body.classList.contains('present')?'Exit present mode':'Present mode'});
+
+const dialog=$('#uploadDialog');$('#uploadBtn').addEventListener('click',()=>dialog.showModal());$('#newAudit').addEventListener('click',()=>dialog.showModal());$('.dialog-close').addEventListener('click',()=>dialog.close());
+$('#repoFolder').addEventListener('change',e=>{
+  const files=[...e.target.files];const skip=/(^|\/)(\.git|node_modules|\.venv|dist|build)(\/|$)/;const source=/\.(py|js|jsx|ts|tsx|go|rs|java|rb|php|c|cpp|h|css|html|sql)$/i;const units=files.filter(f=>source.test(f.name)&&!skip.test(f.webkitRelativePath));const locPromise=Promise.all(units.slice(0,250).map(f=>f.text().then(t=>t.split(/\r?\n/).filter(Boolean).length).catch(()=>0)));
+  locPromise.then(lines=>{$('#uploadStatus').innerHTML=`<b>${escapeHtml(files[0]?.webkitRelativePath.split('/')[0]||'Repository')}</b> indexed locally: ${units.length} source files · ${lines.reduce((a,b)=>a+b,0).toLocaleString()} sampled LOC. Generate full agent artifacts with the CLI to audit conclusions.`;toast('Local territory preview ready')});
+});
+$('#artifactFiles').addEventListener('change',async e=>{
+  const loaded={};for(const f of e.target.files){try{const data=JSON.parse(await f.text());if(data.units&&'rwc' in data)loaded.coverage=data;else if(data.units)loaded.index=data;else if(data.ranked_candidates)loaded.adjudication=data;else if(data.new_answer)loaded.flip=data;else if(data.examined)loaded.trace=data}catch{toast(`Invalid JSON: ${f.name}`)}}
+  Object.assign(state,loaded);if(state.index&&state.trace&&state.coverage&&state.adjudication&&state.flip){renderBase();dialog.close();toast('Investigation artifacts loaded')}else{$('#uploadStatus').textContent=`Loaded ${Object.keys(loaded).join(', ')||'no recognized'} artifacts. Select all five JSON outputs for a complete investigation.`}
+});
+
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&dialog.open)dialog.close();if(e.key.toLowerCase()==='p'&&!['INPUT','TEXTAREA'].includes(e.target.tagName))$('#presentBtn').click()});
+loadDemo();

@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Scotoma measures what AI agents failed to investigate before answering.">
+  <title>Scotoma — Coverage for AI work</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="noise"></div>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#" aria-label="Scotoma home">
+        <span class="brand-mark"><i></i></span>
+        <span>SCOTOMA</span>
+      </a>
+
+      <button id="newAudit" class="new-audit"><span>＋</span> New audit</button>
+
+      <nav class="nav-section" aria-label="Investigations">
+        <p class="eyebrow">INVESTIGATIONS</p>
+        <button class="history-item active" data-view="demo">
+          <span class="history-icon">⌁</span>
+          <span><b>Flask session security</b><small>108 files · completed</small></span>
+          <em></em>
+        </button>
+      </nav>
+
+      <div class="pipeline-mini">
+        <p class="eyebrow">AUDIT PIPELINE</p>
+        <div class="mini-step done"><span>01</span><div><b>Territory</b><small>108 source units</small></div></div>
+        <div class="mini-step done"><span>02</span><div><b>Trace</b><small>7 files touched</small></div></div>
+        <div class="mini-step done"><span>03</span><div><b>Coverage</b><small>5.51% weighted</small></div></div>
+        <div class="mini-step done"><span>04</span><div><b>Adjudicate</b><small>2 contradictions</small></div></div>
+      </div>
+
+      <div class="sidebar-foot">
+        <a href="https://github.com/abedkkhan/Scotoma" target="_blank" rel="noreferrer">↗ View source</a>
+        <span>Prototype · v0.1</span>
+      </div>
+    </aside>
+
+    <main>
+      <header class="topbar">
+        <div>
+          <span class="status-dot"></span>
+          <span>FLASK / SESSION SECURITY</span>
+        </div>
+        <div class="top-actions">
+          <button id="uploadBtn" class="ghost-btn">Upload repo</button>
+          <button id="presentBtn" class="ghost-btn">Present mode</button>
+          <a class="github-btn" href="https://github.com/abedkkhan/Scotoma" target="_blank" rel="noreferrer">GitHub ↗</a>
+        </div>
+      </header>
+
+      <section class="hero">
+        <div class="hero-copy">
+          <span class="kicker">AGENT COVERAGE ANALYSIS</span>
+          <h1>What did your AI<br><span>never look at?</span></h1>
+          <p>Every agent reports what it found. Scotoma measures the evidence it missed before reaching a conclusion.</p>
+        </div>
+        <div class="hero-orbit" aria-hidden="true">
+          <div class="orbit orbit-a"></div><div class="orbit orbit-b"></div>
+          <div class="blind-core"><span>5.51%</span><small>EVIDENCE<br>COVERAGE</small></div>
+        </div>
+      </section>
+
+      <section class="workspace">
+        <div class="chat-column">
+          <div id="chat" class="chat" aria-live="polite">
+            <article class="message user-message">
+              <div class="avatar">AK</div>
+              <div><span class="message-label">YOU ASKED</span><p id="questionText">Loading investigation…</p></div>
+            </article>
+
+            <article class="message agent-message">
+              <div class="avatar agent-avatar">S</div>
+              <div class="message-body">
+                <span class="message-label">AGENT ANSWER · <b id="agentModel">MODEL</b></span>
+                <div id="originalAnswer" class="answer clamp"></div>
+                <button class="text-btn expand-answer">Show full answer ↓</button>
+              </div>
+            </article>
+
+            <article class="audit-message hidden" id="auditMessage">
+              <div class="audit-head"><span class="pulse-icon">◉</span><div><b>Scotoma audit complete</b><small>The answer outran its evidence.</small></div></div>
+              <div class="metric-row">
+                <div class="metric critical"><strong id="rwcMetric">—</strong><span>risk-weighted coverage</span></div>
+                <div class="metric"><strong id="naiveMetric">—</strong><span>naive file coverage</span></div>
+                <div class="metric"><strong id="fullReadMetric">—</strong><span>files read in full</span></div>
+              </div>
+              <p class="audit-callout"><span>!</span> The agent never finished reading a single file, but presented its answer without qualification.</p>
+            </article>
+
+            <article class="message corrected-message hidden" id="correctedMessage">
+              <div class="avatar corrected-avatar">S</div>
+              <div class="message-body">
+                <span class="message-label">ANSWER AFTER EVIDENCE INJECTION · <b>CONCLUSION CHANGED</b></span>
+                <div id="correctedAnswer" class="answer clamp"></div>
+                <button class="text-btn expand-answer">Show full answer ↓</button>
+                <div id="changeSummary" class="change-summary"></div>
+              </div>
+            </article>
+          </div>
+
+          <div class="composer">
+            <textarea id="questionInput" rows="1" placeholder="Ask a security question about this repository…"></textarea>
+            <button id="runAudit" class="send-btn">Run audit <span>→</span></button>
+          </div>
+        </div>
+
+        <aside class="inspector">
+          <div class="inspector-tabs">
+            <button class="active" data-tab="coverage">Coverage</button>
+            <button data-tab="claims">Claims</button>
+            <button data-tab="evidence">Evidence</button>
+          </div>
+
+          <section class="tab-panel active" id="coveragePanel">
+            <div class="panel-title"><div><span class="eyebrow">REPOSITORY TERRITORY</span><h2>Evidence map</h2></div><div class="legend"><i></i> unread <i></i> partial <i></i> contradiction</div></div>
+            <p class="panel-help">Tile size is relevance. Brightness is examination depth. Red is evidence that overturns the answer.</p>
+            <div id="coverageMap" class="coverage-map"><div class="loading">Mapping blind spots…</div></div>
+            <div class="map-footer"><span id="mapFiles">— files</span><span id="mapTouched">— examined</span><span id="mapContradictions">— contradictions</span></div>
+          </section>
+
+          <section class="tab-panel" id="claimsPanel">
+            <div class="panel-title"><div><span class="eyebrow">ATOMIC ASSERTIONS</span><h2>Claims under test</h2></div></div>
+            <div id="claimsList" class="claims-list"></div>
+          </section>
+
+          <section class="tab-panel" id="evidencePanel">
+            <div class="panel-title"><div><span class="eyebrow">CLAIM ADJUDICATION</span><h2>Ranked blind spots</h2></div></div>
+            <div id="evidenceList" class="evidence-list"></div>
+            <button id="injectEvidence" class="inject-btn">Inject top evidence & rerun <span>→</span></button>
+          </section>
+        </aside>
+      </section>
+    </main>
+  </div>
+
+  <dialog id="uploadDialog">
+    <button class="dialog-close" aria-label="Close">×</button>
+    <span class="kicker">LOCAL-FIRST INPUT</span>
+    <h2>Bring your own investigation</h2>
+    <p>Nothing is uploaded by this page. Inspect a repository folder locally, or load artifacts produced by the Scotoma CLI.</p>
+    <div class="upload-grid">
+      <label class="drop-card">
+        <span class="drop-icon">⌗</span><b>Choose repository folder</b>
+        <small>Build a browser-local territory preview</small>
+        <input id="repoFolder" type="file" webkitdirectory multiple>
+      </label>
+      <label class="drop-card">
+        <span class="drop-icon">{ }</span><b>Load Scotoma artifacts</b>
+        <small>index, trace, coverage, adjudication and flip JSON</small>
+        <input id="artifactFiles" type="file" accept="application/json,.json" multiple>
+      </label>
+    </div>
+    <div id="uploadStatus" class="upload-status">Static GitHub Pages never receives your source or API key.</div>
+    <pre class="cli-hint">python -m scotoma.cli index ./repo --out index.json</pre>
+  </dialog>
+
+  <div id="toast" class="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>

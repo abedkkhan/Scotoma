@@ -1,0 +1,2133 @@
+{
+  "repo_path": "/Users/abidkarim/Desktop/Build_something_cool/targets/flask",
+  "unit_count": 108,
+  "total_loc": 14552,
+  "units": [
+    {
+      "path": ".devcontainer/on-create-command.sh",
+      "language": "Shell",
+      "size_bytes": 165,
+      "loc": 7,
+      "symbols": [],
+      "imports": [],
+      "signature": "Path: .devcontainer/on-create-command.sh"
+    },
+    {
+      "path": "docs/conf.py",
+      "language": "Python",
+      "size_bytes": 3386,
+      "loc": 84,
+      "symbols": [
+        "github_link",
+        "setup"
+      ],
+      "imports": [
+        "packaging.version",
+        "pallets_sphinx_themes"
+      ],
+      "signature": "Path: docs/conf.py | Functions: github_link, setup"
+    },
+    {
+      "path": "examples/celery/make_celery.py",
+      "language": "Python",
+      "size_bytes": 102,
+      "loc": 3,
+      "symbols": [],
+      "imports": [
+        "task_app"
+      ],
+      "signature": "Path: examples/celery/make_celery.py"
+    },
+    {
+      "path": "examples/celery/src/task_app/__init__.py",
+      "language": "Python",
+      "size_bytes": 1024,
+      "loc": 31,
+      "symbols": [
+        "create_app",
+        "celery_init_app"
+      ],
+      "imports": [
+        "celery",
+        "flask"
+      ],
+      "signature": "Path: examples/celery/src/task_app/__init__.py | Functions: create_app, celery_init_app"
+    },
+    {
+      "path": "examples/celery/src/task_app/tasks.py",
+      "language": "Python",
+      "size_bytes": 484,
+      "loc": 15,
+      "symbols": [
+        "add",
+        "block",
+        "process"
+      ],
+      "imports": [
+        "time",
+        "celery"
+      ],
+      "signature": "Path: examples/celery/src/task_app/tasks.py | Functions: add, block, process"
+    },
+    {
+      "path": "examples/celery/src/task_app/templates/index.html",
+      "language": "HTML",
+      "size_bytes": 2909,
+      "loc": 95,
+      "symbols": [],
+      "imports": [],
+      "signature": "Path: examples/celery/src/task_app/templates/index.html"
+    },
+    {
+      "path": "examples/celery/src/task_app/views.py",
+      "language": "Python",
+      "size_bytes": 954,
+      "loc": 28,
+      "symbols": [
+        "result",
+        "add",
+        "block",
+        "process"
+      ],
+      "imports": [
+        "celery.result",
+        "flask",
+        ".tasks"
+      ],
+      "signature": "Path: examples/celery/src/task_app/views.py | Functions: result, add, block, process"
+    },
+    {
+      "path": "examples/javascript/js_example/__init__.py",
+      "language": "Python",
+      "size_bytes": 91,
+      "loc": 3,
+      "symbols": [],
+      "imports": [
+        "flask",
+        "js_example"
+      ],
+      "signature": "Path: examples/javascript/js_example/__init__.py"
+    },
+    {
+      "path": "examples/javascript/js_example/templates/base.html",
+      "language": "HTML",
+      "size_bytes": 1178,
+      "loc": 33,
+      "symbols": [],
+      "imports": [],
+      "signature": "Path: examples/javascript/js_example/templates/base.html"
+    },
+    {
+      "path": "examples/javascript/js_example/templates/fetch.html",
+      "language": "HTML",
+      "size_bytes": 852,
+      "loc": 28,
+      "symbols": [
+        "addSubmit",
+        "parseJSON",
+        "addShow"
+      ],
+      "imports": [],
+      "signature": "Path: examples/javascript/js_example/templates/fetch.html | Symbols: addSubmit, parseJSON, addShow"
+    },
+    {
+      "path": "examples/javascript/js_example/templates/jquery.html",
+      "language": "HTML",
+      "size_bytes": 666,
+      "loc": 23,
+      "symbols": [
+        "addSubmit",
+        "addShow"
+      ],
+      "imports": [],
+      "signature": "Path: examples/javascript/js_example/templates/jquery.html | Symbols: addSubmit, addShow"
+    },
+    {
+      "path": "examples/javascript/js_example/templates/xhr.html",
+      "language": "HTML",
+      "size_bytes": 933,
+      "loc": 25,
+      "symbols": [
+        "addSubmit",
+        "addShow"
+      ],
+      "imports": [],
+      "signature": "Path: examples/javascript/js_example/templates/xhr.html | Symbols: addSubmit, addShow"
+    },
+    {
+      "path": "examples/javascript/js_example/views.py",
+      "language": "Python",
+      "size_bytes": 429,
+      "loc": 13,
+      "symbols": [
+        "index",
+        "add"
+      ],
+      "imports": [
+        "flask",
+        ".app"
+      ],
+      "signature": "Path: examples/javascript/js_example/views.py | Functions: index, add"
+    },
+    {
+      "path": "examples/javascript/tests/conftest.py",
+      "language": "Python",
+      "size_bytes": 216,
+      "loc": 10,
+      "symbols": [
+        "fixture_app",
+        "client"
+      ],
+      "imports": [
+        "pytest",
+        "js_example"
+      ],
+      "signature": "Path: examples/javascript/tests/conftest.py | Functions: fixture_app, client"
+    },
+    {
+      "path": "examples/javascript/tests/test_js_example.py",
+      "language": "Python",
+      "size_bytes": 727,
+      "loc": 22,
+      "symbols": [
+        "test_index",
+        "test_add"
+      ],
+      "imports": [
+        "pytest",
+        "flask"
+      ],
+      "signature": "Path: examples/javascript/tests/test_js_example.py | Functions: test_index, test_add"
+    },
+    {
+      "path": "examples/tutorial/flaskr/__init__.py",
+      "language": "Python",
+      "size_bytes": 1406,
+      "loc": 36,
+      "symbols": [
+        "create_app"
+      ],
+      "imports": [
+        "os",
+        "flask"
+      ],
+      "signature": "Path: examples/tutorial/flaskr/__init__.py | Functions: create_app | Docs: create_app: Create and configure an instance of the Flask application."
+    },
+    {
+      "path": "examples/tutorial/flaskr/auth.py",
+      "language": "Python",
+      "size_bytes": 3296,
+      "loc": 90,
+      "symbols": [
+        "login_required",
+        "load_logged_in_user",
+        "register",
+        "login",
+        "logout"
+      ],
+      "imports": [
+        "functools",
+        "flask",
+        "werkzeug.security",
+        ".db"
+      ],
+      "signature": "Path: examples/tutorial/flaskr/auth.py | Functions: login_required, load_logged_in_user, register, login, logout | Docs: login_required: View decorator that redirects anonymous users to the login page.; load_logged_in_user: If a user id is stored in the session, load the user object from; register: Register a new user.; login: Log in a registered user by adding the user id to the session.; logout: Clear the current session, including the stored user id."
+    },
+    {
+      "path": "examples/tutorial/flaskr/blog.py",
+      "language": "Python",
+      "size_bytes": 3305,
+      "loc": 100,
+      "symbols": [
+        "index",
+        "get_post",
+        "create",
+        "update",
+        "delete"
+      ],
+      "imports": [
+        "flask",
+        "werkzeug.exceptions",
+        ".auth",
+        ".db"
+      ],
+      "signature": "Path: examples/tutorial/flaskr/blog.py | Functions: index, get_post, create, update, delete | Docs: index: Show all the posts, most recent first.; get_post: Get a post and its author by id.; create: Create a new post for the current user.; update: Update a post if the current user is the author.; delete: Delete a post."
+    },
+    {
+      "path": "examples/tutorial/flaskr/db.py",
+      "language": "Python",
+      "size_bytes": 1317,
+      "loc": 40,
+      "symbols": [
+        "get_db",
+        "close_db",
+        "init_db",
+        "init_db_command",
+        "init_app"
+      ],
+      "imports": [
+        "sqlite3",
+        "datetime",
+        "click",
+        "flask"
+      ],
+      "signature": "Path: examples/tutorial/flaskr/db.py | Functions: get_db, close_db, init_db, init_db_command, init_app | Docs: get_db: Connect to the application's configured database. The connection; close_db: If this request connected to the database, close the; init_db: Clear existing data and create new tables.; init_db_command: Clear existing data and create new tables.; init_app: Register database functions with the Flask app. This is called by"
+    },
+    {
+      "path": "examples/tutorial/flaskr/schema.sql",
+      "language": "SQL",
+      "size_bytes": 498,
+      "loc": 17,
+      "symbols": [],
+      "imports": [],
+      "signature": "Path: examples/tutorial/flaskr/schema.sql"
+    },
+    {
+      "path": "examples/tutorial/flaskr/static/style.css",
+      "language": "CSS",
+      "size_bytes": 1696,
+      "loc": 109,
+      "symbols": [],
+      "imports": [],
+      "signature": "Path: examples/tutorial/flaskr/static/style.css"
+    },
+    {
+      "path": "examples/tutorial/flaskr/templates/auth/login.html",
+      "language": "HTML",
+      "size_bytes": 424,
+      "loc": 13,
+      "symbols": [],
+      "imports": [],
+      "signature": "Path: examples/tutorial/flaskr/templates/auth/login.html"
+    },
+    {
+      "path": "examples/tutorial/flaskr/templates/auth/register.html",
+      "language": "HTML",
+      "size_bytes": 428,
+      "loc": 13,
+      "symbols": [],
+      "imports": [],
+      "signature": "Path: examples/tutorial/flaskr/templates/auth/register.html"
+    },
+    {
+      "path": "examples/tutorial/flaskr/templates/base.html",
+      "language": "HTML",
+      "size_bytes": 752,
+      "loc": 24,
+      "symbols": [],
+      "imports": [],
+      "signature": "Path: examples/tutorial/flaskr/templates/base.html"
+    },
+    {
+      "path": "examples/tutorial/flaskr/templates/blog/create.html",
+      "language": "HTML",
+      "size_bytes": 447,
+      "loc": 13,
+      "symbols": [],
+      "imports": [],
+      "signature": "Path: examples/tutorial/flaskr/templates/blog/create.html"
+    },
+    {
+      "path": "examples/tutorial/flaskr/templates/blog/index.html",
+      "language": "HTML",
+      "size_bytes": 790,
+      "loc": 26,
+      "symbols": [],
+      "imports": [],
+      "signature": "Path: examples/tutorial/flaskr/templates/blog/index.html"
+    },
+    {
+      "path": "examples/tutorial/flaskr/templates/blog/update.html",
+      "language": "HTML",
+      "size_bytes": 690,
+      "loc": 17,
+      "symbols": [],
+      "imports": [],
+      "signature": "Path: examples/tutorial/flaskr/templates/blog/update.html"
+    },
+    {
+      "path": "examples/tutorial/tests/conftest.py",
+      "language": "Python",
+      "size_bytes": 1454,
+      "loc": 44,
+      "symbols": [
+        "app",
+        "client",
+        "runner",
+        "AuthActions",
+        "auth"
+      ],
+      "imports": [
+        "os",
+        "tempfile",
+        "pytest",
+        "flaskr",
+        "flaskr.db"
+      ],
+      "signature": "Path: examples/tutorial/tests/conftest.py | Classes: AuthActions(login, logout, __init__) | Functions: app, client, runner, auth | Docs: app: Create and configure a new app instance for each test.; client: A test client for the app.; runner: A test runner for the app's Click commands."
+    },
+    {
+      "path": "examples/tutorial/tests/data.sql",
+      "language": "SQL",
+      "size_bytes": 394,
+      "loc": 7,
+      "symbols": [],
+      "imports": [],
+      "signature": "Path: examples/tutorial/tests/data.sql"
+    },
+    {
+      "path": "examples/tutorial/tests/test_auth.py",
+      "language": "Python",
+      "size_bytes": 2070,
+      "loc": 53,
+      "symbols": [
+        "test_register",
+        "test_register_validate_input",
+        "test_login",
+        "test_login_validate_input",
+        "test_logout"
+      ],
+      "imports": [
+        "pytest",
+        "flask",
+        "flaskr.db"
+      ],
+      "signature": "Path: examples/tutorial/tests/test_auth.py | Functions: test_register, test_register_validate_input, test_login, test_login_validate_input, test_logout"
+    },
+    {
+      "path": "examples/tutorial/tests/test_blog.py",
+      "language": "Python",
+      "size_bytes": 2503,
+      "loc": 61,
+      "symbols": [
+        "test_index",
+        "test_login_required",
+        "test_author_required",
+        "test_exists_required",
+        "test_create",
+        "test_update",
+        "test_create_update_validate",
+        "test_delete"
+      ],
+      "imports": [
+        "pytest",
+        "flaskr.db"
+      ],
+      "signature": "Path: examples/tutorial/tests/test_blog.py | Functions: test_index, test_login_required, test_author_required, test_exists_required, test_create, test_update, test_create_update_validate, test_delete"
+    },
+    {
+      "path": "examples/tutorial/tests/test_db.py",
+      "language": "Python",
+      "size_bytes": 616,
+      "loc": 19,
+      "symbols": [
+        "test_get_close_db",
+        "test_init_db_command"
+      ],
+      "imports": [
+        "sqlite3",
+        "pytest",
+        "flaskr.db"
+      ],
+      "signature": "Path: examples/tutorial/tests/test_db.py | Functions: test_get_close_db, test_init_db_command"
+    },
+    {
+      "path": "examples/tutorial/tests/test_factory.py",
+      "language": "Python",
+      "size_bytes": 298,
+      "loc": 8,
+      "symbols": [
+        "test_config",
+        "test_hello"
+      ],
+      "imports": [
+        "flaskr"
+      ],
+      "signature": "Path: examples/tutorial/tests/test_factory.py | Functions: test_config, test_hello | Docs: test_config: Test create_app without passing test config."
+    },
+    {
+      "path": "src/flask/__init__.py",
+      "language": "Python",
+      "size_bytes": 2072,
+      "loc": 39,
+      "symbols": [],
+      "imports": [
+        ".json",
+        ".app",
+        ".blueprints",
+        ".config",
+        ".ctx",
+        ".globals",
+        ".helpers",
+        ".signals",
+        ".templating",
+        ".wrappers"
+      ],
+      "signature": "Path: src/flask/__init__.py"
+    },
+    {
+      "path": "src/flask/__main__.py",
+      "language": "Python",
+      "size_bytes": 30,
+      "loc": 2,
+      "symbols": [],
+      "imports": [
+        ".cli"
+      ],
+      "signature": "Path: src/flask/__main__.py"
+    },
+    {
+      "path": "src/flask/app.py",
+      "language": "Python",
+      "size_bytes": 65472,
+      "loc": 1328,
+      "symbols": [
+        "_make_timedelta",
+        "remove_ctx",
+        "add_ctx",
+        "Flask"
+      ],
+      "imports": [
+        "__future__",
+        "collections.abc",
+        "inspect",
+        "os",
+        "sys",
+        "typing",
+        "weakref",
+        "datetime",
+        "functools",
+        "itertools",
+        "types",
+        "urllib.parse",
+        "click",
+        "werkzeug.datastructures",
+        "werkzeug.exceptions",
+        "werkzeug.routing",
+        "werkzeug.serving",
+        "werkzeug.wrappers",
+        "werkzeug.wsgi",
+        ".cli",
+        ".typing",
+        ".ctx",
+        ".globals",
+        ".helpers",
+        ".sansio.app",
+        ".sessions",
+        ".signals",
+        ".templating",
+        ".wrappers"
+      ],
+      "signature": "Path: src/flask/app.py | Classes: Flask(get_send_file_max_age, send_static_file, open_resource, open_instance_resource, create_jinja_environment, create_url_adapter, raise_routing_exception, update_template_context, make_shell_context, run, test_client, test_cli_runner, handle_http_exception, handle_user_exception, handle_exception, log_exception, dispatch_request, full_dispatch_request, finalize_request, make_default_options_response, ensure_sync, async_to_sync, url_for, make_response, preprocess_request, process_response, do_teardown_request, do_teardown_appcontext, app_context, request_con\u2026"
+    },
+    {
+      "path": "src/flask/blueprints.py",
+      "language": "Python",
+      "size_bytes": 4541,
+      "loc": 102,
+      "symbols": [
+        "Blueprint"
+      ],
+      "imports": [
+        "__future__",
+        "os",
+        "typing",
+        "datetime",
+        ".cli",
+        ".globals",
+        ".helpers",
+        ".sansio.blueprints",
+        ".sansio.scaffold"
+      ],
+      "signature": "Path: src/flask/blueprints.py | Classes: Blueprint(get_send_file_max_age, send_static_file, open_resource, __init__) | Docs: Blueprint.get_send_file_max_age: Used by :func:`send_file` to determine the ``max_age`` cache; Blueprint.send_static_file: The view function used to serve files from; Blueprint.open_resource: Open a resource file relative to :attr:`root_path` for reading. The"
+    },
+    {
+      "path": "src/flask/cli.py",
+      "language": "Python",
+      "size_bytes": 36836,
+      "loc": 899,
+      "symbols": [
+        "NoAppException",
+        "find_best_app",
+        "_called_with_wrong_args",
+        "find_app_by_string",
+        "prepare_import",
+        "locate_app",
+        "get_version",
+        "ScriptInfo",
+        "with_appcontext",
+        "AppGroup",
+        "_set_app",
+        "_set_debug",
+        "_env_file_callback",
+        "FlaskGroup",
+        "_path_is_ancestor",
+        "load_dotenv",
+        "show_server_banner",
+        "CertParamType",
+        "_validate_key",
+        "SeparatedPathType",
+        "run_command",
+        "shell_command",
+        "routes_command",
+        "main"
+      ],
+      "imports": [
+        "__future__",
+        "ast",
+        "collections.abc",
+        "importlib.metadata",
+        "inspect",
+        "os",
+        "platform",
+        "re",
+        "sys",
+        "traceback",
+        "typing",
+        "functools",
+        "operator",
+        "types",
+        "click",
+        "click.core",
+        "werkzeug",
+        "werkzeug.serving",
+        "werkzeug.utils",
+        ".globals",
+        ".helpers"
+      ],
+      "signature": "Path: src/flask/cli.py | Classes: NoAppException; ScriptInfo(load_app, __init__); AppGroup(command, group); FlaskGroup(get_command, list_commands, make_context, parse_args, __init__, _load_plugin_commands); CertParamType(convert, __init__); SeparatedPathType(convert) | Functions: find_best_app, _called_with_wrong_args, find_app_by_string, prepare_import, locate_app, locate_app, locate_app, get_version, with_appcontext, _set_app, _set_debug, _env_file_callback, _path_is_ancestor, load_dotenv, show_server_banner, _validate_key, run_command, shell_command, routes_command, main | Docs: NoAppExcep\u2026"
+    },
+    {
+      "path": "src/flask/config.py",
+      "language": "Python",
+      "size_bytes": 13219,
+      "loc": 286,
+      "symbols": [
+        "ConfigAttribute",
+        "Config"
+      ],
+      "imports": [
+        "__future__",
+        "errno",
+        "json",
+        "os",
+        "types",
+        "typing",
+        "werkzeug.utils"
+      ],
+      "signature": "Path: src/flask/config.py | Classes: ConfigAttribute(__init__, __get__, __get__, __get__, __set__); Config(from_envvar, from_prefixed_env, from_pyfile, from_object, from_file, from_mapping, get_namespace, __init__, __repr__) | Docs: ConfigAttribute: Makes an attribute forward to the config; Config: Works exactly like a dict but provides ways to fill it from files; Config.from_envvar: Loads a configuration from an environment variable pointing to; Config.from_prefixed_env: Load any environment variables that start with ``FLASK_``,; Config.from_pyfile: Updates the values in the config from a Py\u2026"
+    },
+    {
+      "path": "src/flask/ctx.py",
+      "language": "Python",
+      "size_bytes": 18261,
+      "loc": 404,
+      "symbols": [
+        "_AppCtxGlobals",
+        "after_this_request",
+        "copy_current_request_context",
+        "has_request_context",
+        "has_app_context",
+        "AppContext",
+        "__getattr__"
+      ],
+      "imports": [
+        "__future__",
+        "contextvars",
+        "typing",
+        "functools",
+        "types",
+        "werkzeug.exceptions",
+        "werkzeug.routing",
+        ".typing",
+        ".globals",
+        ".helpers",
+        ".signals"
+      ],
+      "signature": "Path: src/flask/ctx.py | Classes: _AppCtxGlobals(get, pop, setdefault, __getattr__, __setattr__, __delattr__, __contains__, __iter__, __repr__); AppContext(from_environ, has_request, copy, request, session, match_request, push, pop, __init__, _get_session, __enter__, __exit__, __repr__) | Functions: after_this_request, copy_current_request_context, has_request_context, has_app_context, __getattr__ | Docs: _AppCtxGlobals: A plain object. Used as a namespace for storing data during an; _AppCtxGlobals.get: Get an attribute by name, or a default value. Like; _AppCtxGlobals.pop: Get and remove an\u2026"
+    },
+    {
+      "path": "src/flask/debughelpers.py",
+      "language": "Python",
+      "size_bytes": 6070,
+      "loc": 146,
+      "symbols": [
+        "UnexpectedUnicodeError",
+        "DebugFilesKeyError",
+        "FormDataRoutingRedirect",
+        "attach_enctype_error_multidict",
+        "_dump_loader_info",
+        "explain_template_loading_attempts"
+      ],
+      "imports": [
+        "__future__",
+        "typing",
+        "jinja2.loaders",
+        "werkzeug.routing",
+        ".blueprints",
+        ".globals",
+        ".sansio.app"
+      ],
+      "signature": "Path: src/flask/debughelpers.py | Classes: UnexpectedUnicodeError; DebugFilesKeyError(__init__, __str__); FormDataRoutingRedirect(__init__) | Functions: attach_enctype_error_multidict, _dump_loader_info, explain_template_loading_attempts | Docs: UnexpectedUnicodeError: Raised in places where we want some better error reporting for; DebugFilesKeyError: Raised from request.files during debugging. The idea is that it can; FormDataRoutingRedirect: This exception is raised in debug mode if a routing redirect; attach_enctype_error_multidict: Patch ``request.files.__getitem__`` to raise a descriptiv\u2026"
+    },
+    {
+      "path": "src/flask/globals.py",
+      "language": "Python",
+      "size_bytes": 2414,
+      "loc": 58,
+      "symbols": [
+        "__getattr__"
+      ],
+      "imports": [
+        "__future__",
+        "typing",
+        "contextvars",
+        "werkzeug.local"
+      ],
+      "signature": "Path: src/flask/globals.py | Functions: __getattr__"
+    },
+    {
+      "path": "src/flask/helpers.py",
+      "language": "Python",
+      "size_bytes": 24637,
+      "loc": 534,
+      "symbols": [
+        "get_debug_flag",
+        "get_load_dotenv",
+        "stream_with_context",
+        "make_response",
+        "url_for",
+        "redirect",
+        "abort",
+        "get_template_attribute",
+        "flash",
+        "get_flashed_messages",
+        "_prepare_send_file_kwargs",
+        "send_file",
+        "send_from_directory",
+        "get_root_path",
+        "_split_blueprint_path",
+        "_CollectErrors"
+      ],
+      "imports": [
+        "__future__",
+        "importlib.util",
+        "os",
+        "sys",
+        "typing",
+        "datetime",
+        "functools",
+        "types",
+        "werkzeug.utils",
+        "werkzeug.exceptions",
+        "werkzeug.wrappers",
+        ".globals",
+        ".signals"
+      ],
+      "signature": "Path: src/flask/helpers.py | Classes: _CollectErrors(raise_any, __init__, __enter__, __exit__) | Functions: get_debug_flag, get_load_dotenv, stream_with_context, stream_with_context, stream_with_context, make_response, url_for, redirect, abort, get_template_attribute, flash, get_flashed_messages, _prepare_send_file_kwargs, send_file, send_from_directory, get_root_path, _split_blueprint_path | Docs: get_debug_flag: Get whether debug mode should be enabled for the app, indicated by the; get_load_dotenv: Get whether the user has disabled loading default dotenv files by; stream_with_context: Wrap\u2026"
+    },
+    {
+      "path": "src/flask/json/__init__.py",
+      "language": "Python",
+      "size_bytes": 5583,
+      "loc": 122,
+      "symbols": [
+        "dumps",
+        "dump",
+        "loads",
+        "load",
+        "jsonify"
+      ],
+      "imports": [
+        "__future__",
+        "json",
+        "typing",
+        "..globals",
+        ".provider"
+      ],
+      "signature": "Path: src/flask/json/__init__.py | Functions: dumps, dump, loads, load, jsonify | Docs: dumps: Serialize data as JSON.; dump: Serialize data as JSON and write to a file.; loads: Deserialize data as JSON.; load: Deserialize data as JSON read from a file.; jsonify: Serialize the given arguments as JSON, and return a"
+    },
+    {
+      "path": "src/flask/json/provider.py",
+      "language": "Python",
+      "size_bytes": 7644,
+      "loc": 163,
+      "symbols": [
+        "JSONProvider",
+        "_default",
+        "DefaultJSONProvider"
+      ],
+      "imports": [
+        "__future__",
+        "dataclasses",
+        "decimal",
+        "json",
+        "typing",
+        "uuid",
+        "weakref",
+        "datetime",
+        "werkzeug.http"
+      ],
+      "signature": "Path: src/flask/json/provider.py | Classes: JSONProvider(dumps, dump, loads, load, response, __init__, _prepare_response_obj); DefaultJSONProvider(dumps, loads, response) | Functions: _default | Docs: JSONProvider: A standard set of JSON operations for an application. Subclasses; JSONProvider.dumps: Serialize data as JSON.; JSONProvider.dump: Serialize data as JSON and write to a file.; JSONProvider.loads: Deserialize data as JSON.; JSONProvider.load: Deserialize data as JSON read from a file.; JSONProvider.response: Serialize the given arguments as JSON, and return a; DefaultJSONProvider: Pr\u2026"
+    },
+    {
+      "path": "src/flask/json/tag.py",
+      "language": "Python",
+      "size_bytes": 9281,
+      "loc": 236,
+      "symbols": [
+        "JSONTag",
+        "TagDict",
+        "PassDict",
+        "TagTuple",
+        "PassList",
+        "TagBytes",
+        "TagMarkup",
+        "TagUUID",
+        "TagDateTime",
+        "TaggedJSONSerializer"
+      ],
+      "imports": [
+        "__future__",
+        "typing",
+        "base64",
+        "datetime",
+        "uuid",
+        "markupsafe",
+        "werkzeug.http",
+        "..json"
+      ],
+      "signature": "Path: src/flask/json/tag.py | Module: Tagged JSON ~~~~~~~~~~~ A compact representation for lossless serialization of non-standard JSON types. :class:`~flask.sessions.SecureCookieSessionInterface` uses this to serialize the session data, b | Classes: JSONTag(check, to_json, to_python, tag, __init__); TagDict(check, to_json, to_python); PassDict(check, to_json); TagTuple(check, to_json, to_python); PassList(check, to_json); TagBytes(check, to_json, to_python); TagMarkup(check, to_json, to_python); TagUUID(check, to_json, to_python); TagDateTime(check, to_json, to_python); TaggedJSONSerializer(r\u2026"
+    },
+    {
+      "path": "src/flask/logging.py",
+      "language": "Python",
+      "size_bytes": 2377,
+      "loc": 55,
+      "symbols": [
+        "wsgi_errors_stream",
+        "has_level_handler",
+        "create_logger"
+      ],
+      "imports": [
+        "__future__",
+        "logging",
+        "sys",
+        "typing",
+        "werkzeug.local",
+        ".globals"
+      ],
+      "signature": "Path: src/flask/logging.py | Functions: wsgi_errors_stream, has_level_handler, create_logger | Docs: wsgi_errors_stream: Find the most appropriate error stream for the application. If a request; has_level_handler: Check if there is a handler in the logging chain that will handle the; create_logger: Get the Flask app's logger and configure it if needed."
+    },
+    {
+      "path": "src/flask/sansio/app.py",
+      "language": "Python",
+      "size_bytes": 39495,
+      "loc": 832,
+      "symbols": [
+        "_make_timedelta",
+        "App"
+      ],
+      "imports": [
+        "__future__",
+        "logging",
+        "os",
+        "sys",
+        "typing",
+        "datetime",
+        "itertools",
+        "werkzeug.exceptions",
+        "werkzeug.routing",
+        "werkzeug.sansio.response",
+        "werkzeug.utils",
+        "..typing",
+        "..config",
+        "..ctx",
+        "..helpers",
+        "..json.provider",
+        "..logging",
+        "..templating",
+        ".scaffold"
+      ],
+      "signature": "Path: src/flask/sansio/app.py | Classes: App(name, logger, jinja_env, create_jinja_environment, make_config, make_aborter, auto_find_instance_path, create_global_jinja_loader, select_jinja_autoescape, debug, debug, register_blueprint, iter_blueprints, add_url_rule, template_filter, template_filter, template_filter, add_template_filter, template_test, template_test, template_test, add_template_test, template_global, template_global, template_global, add_template_global, teardown_appcontext, shell_context_processor, trap_http_exception, redirect, inject_url_defaults, handle_url_build_error, __i\u2026"
+    },
+    {
+      "path": "src/flask/sansio/blueprints.py",
+      "language": "Python",
+      "size_bytes": 27017,
+      "loc": 572,
+      "symbols": [
+        "BlueprintSetupState",
+        "Blueprint"
+      ],
+      "imports": [
+        "__future__",
+        "os",
+        "typing",
+        "collections",
+        "functools",
+        "..typing",
+        ".scaffold"
+      ],
+      "signature": "Path: src/flask/sansio/blueprints.py | Classes: BlueprintSetupState(add_url_rule, __init__); Blueprint(record, record_once, make_setup_state, register_blueprint, register, add_url_rule, app_template_filter, app_template_filter, app_template_filter, add_app_template_filter, app_template_test, app_template_test, app_template_test, add_app_template_test, app_template_global, app_template_global, app_template_global, add_app_template_global, before_app_request, after_app_request, teardown_app_request, app_context_processor, app_errorhandler, app_url_value_preprocessor, app_url_defaults, __init__,\u2026"
+    },
+    {
+      "path": "src/flask/sansio/scaffold.py",
+      "language": "Python",
+      "size_bytes": 30633,
+      "loc": 647,
+      "symbols": [
+        "setupmethod",
+        "Scaffold",
+        "_endpoint_from_view_func",
+        "_find_package_path",
+        "find_package"
+      ],
+      "imports": [
+        "__future__",
+        "importlib.util",
+        "os",
+        "pathlib",
+        "sys",
+        "typing",
+        "collections",
+        "functools",
+        "jinja2",
+        "werkzeug.exceptions",
+        "werkzeug.utils",
+        "..typing",
+        "..helpers",
+        "..templating"
+      ],
+      "signature": "Path: src/flask/sansio/scaffold.py | Classes: Scaffold(static_folder, static_folder, has_static_folder, static_url_path, static_url_path, jinja_loader, get, query, post, put, delete, patch, route, add_url_rule, endpoint, before_request, after_request, teardown_request, context_processor, url_value_preprocessor, url_defaults, errorhandler, register_error_handler, __init__, __repr__, _check_setup_finished, _method_route, _get_exc_class_and_code) | Functions: setupmethod, _endpoint_from_view_func, _find_package_path, find_package | Docs: Scaffold: Common behavior shared between :class:`~flask.Fl\u2026"
+    },
+    {
+      "path": "src/flask/sessions.py",
+      "language": "Python",
+      "size_bytes": 14969,
+      "loc": 310,
+      "symbols": [
+        "SessionMixin",
+        "SecureCookieSession",
+        "NullSession",
+        "SessionInterface",
+        "_lazy_sha1",
+        "SecureCookieSessionInterface"
+      ],
+      "imports": [
+        "__future__",
+        "collections.abc",
+        "hashlib",
+        "typing",
+        "datetime",
+        "itsdangerous",
+        "werkzeug.datastructures",
+        ".json.tag"
+      ],
+      "signature": "Path: src/flask/sessions.py | Classes: SessionMixin(permanent, permanent); SecureCookieSession(__init__); NullSession(_fail); SessionInterface(make_null_session, is_null_session, get_cookie_name, get_cookie_domain, get_cookie_path, get_cookie_httponly, get_cookie_secure, get_cookie_samesite, get_cookie_partitioned, get_expiration_time, should_set_cookie, open_session, save_session); SecureCookieSessionInterface(get_signing_serializer, open_session, save_session) | Functions: _lazy_sha1 | Docs: SessionMixin: Expands a basic dictionary with session attributes.; SessionMixin.permanent: This refl\u2026"
+    },
+    {
+      "path": "src/flask/signals.py",
+      "language": "Python",
+      "size_bytes": 750,
+      "loc": 14,
+      "symbols": [],
+      "imports": [
+        "__future__",
+        "blinker"
+      ],
+      "signature": "Path: src/flask/signals.py"
+    },
+    {
+      "path": "src/flask/templating.py",
+      "language": "Python",
+      "size_bytes": 7336,
+      "loc": 166,
+      "symbols": [
+        "_default_template_ctx_processor",
+        "Environment",
+        "DispatchingJinjaLoader",
+        "_render",
+        "render_template",
+        "render_template_string",
+        "_stream",
+        "stream_template",
+        "stream_template_string"
+      ],
+      "imports": [
+        "__future__",
+        "typing",
+        "jinja2",
+        ".ctx",
+        ".globals",
+        ".helpers",
+        ".signals"
+      ],
+      "signature": "Path: src/flask/templating.py | Classes: Environment(__init__); DispatchingJinjaLoader(get_source, list_templates, __init__, _get_source_explained, _get_source_fast, _iter_loaders) | Functions: _default_template_ctx_processor, _render, render_template, render_template_string, _stream, stream_template, stream_template_string | Docs: _default_template_ctx_processor: Default template context processor. Replaces the ``request`` and ``g``; Environment: Works like a regular Jinja environment but has some additional; DispatchingJinjaLoader: A loader that looks for templates in the application and al\u2026"
+    },
+    {
+      "path": "src/flask/testing.py",
+      "language": "Python",
+      "size_bytes": 10134,
+      "loc": 237,
+      "symbols": [
+        "EnvironBuilder",
+        "_get_werkzeug_version",
+        "FlaskClient",
+        "FlaskCliRunner"
+      ],
+      "imports": [
+        "__future__",
+        "importlib.metadata",
+        "typing",
+        "contextlib",
+        "copy",
+        "types",
+        "urllib.parse",
+        "werkzeug.test",
+        "click.testing",
+        "werkzeug.wrappers",
+        ".cli",
+        ".sessions"
+      ],
+      "signature": "Path: src/flask/testing.py | Classes: EnvironBuilder(json_dumps, __init__); FlaskClient(session_transaction, open, __init__, _copy_environ, _request_from_builder_args, __enter__, __exit__); FlaskCliRunner(invoke, __init__) | Functions: _get_werkzeug_version | Docs: EnvironBuilder: An :class:`~werkzeug.test.EnvironBuilder`, that takes defaults from the; EnvironBuilder.json_dumps: Serialize ``obj`` to a JSON-formatted string.; FlaskClient: Works like a regular Werkzeug test client, with additional behavior for; FlaskClient.session_transaction: When used in combination with a ``with`` statement\u2026"
+    },
+    {
+      "path": "src/flask/typing.py",
+      "language": "Python",
+      "size_bytes": 3114,
+      "loc": 77,
+      "symbols": [],
+      "imports": [
+        "__future__",
+        "collections.abc",
+        "typing"
+      ],
+      "signature": "Path: src/flask/typing.py"
+    },
+    {
+      "path": "src/flask/views.py",
+      "language": "Python",
+      "size_bytes": 6971,
+      "loc": 146,
+      "symbols": [
+        "View",
+        "MethodView"
+      ],
+      "imports": [
+        "__future__",
+        "typing",
+        ".typing",
+        ".globals"
+      ],
+      "signature": "Path: src/flask/views.py | Classes: View(dispatch_request, as_view); MethodView(dispatch_request, __init_subclass__) | Docs: View: Subclass this class and override :meth:`dispatch_request` to; View.dispatch_request: The actual view function behavior. Subclasses must override; View.as_view: Convert the class into a view function that can be registered; MethodView: Dispatches request methods to the corresponding instance methods."
+    },
+    {
+      "path": "src/flask/wrappers.py",
+      "language": "Python",
+      "size_bytes": 9406,
+      "loc": 194,
+      "symbols": [
+        "Request",
+        "Response"
+      ],
+      "imports": [
+        "__future__",
+        "typing",
+        "werkzeug.exceptions",
+        "werkzeug.wrappers",
+        ".json",
+        ".globals",
+        ".helpers"
+      ],
+      "signature": "Path: src/flask/wrappers.py | Classes: Request(max_content_length, max_content_length, max_form_memory_size, max_form_memory_size, max_form_parts, max_form_parts, endpoint, blueprint, blueprints, on_json_loading_failed, _load_form_data); Response(max_cookie_size) | Docs: Request: The request object used by default in Flask. Remembers the; Request.max_content_length: The maximum number of bytes that will be read during this request. If; Request.max_form_memory_size: The maximum size in bytes any non-file form field may be in a; Request.max_form_parts: The maximum number of fields that may be p\u2026"
+    },
+    {
+      "path": "tests/conftest.py",
+      "language": "Python",
+      "size_bytes": 2546,
+      "loc": 82,
+      "symbols": [
+        "_standard_os_environ",
+        "app",
+        "app_ctx",
+        "req_ctx",
+        "client",
+        "test_apps",
+        "leak_detector",
+        "modules_tmp_path",
+        "modules_tmp_path_prefix",
+        "site_packages",
+        "purge_module"
+      ],
+      "imports": [
+        "os",
+        "sys",
+        "pytest",
+        "flask",
+        "flask.globals"
+      ],
+      "signature": "Path: tests/conftest.py | Functions: _standard_os_environ, app, app_ctx, req_ctx, client, test_apps, leak_detector, modules_tmp_path, modules_tmp_path_prefix, site_packages, purge_module | Docs: _standard_os_environ: Set up ``os.environ`` at the start of every test to have; leak_detector: Fails if any app contexts are still pushed when a test ends. Pops all; modules_tmp_path: A temporary directory added to sys.path.; site_packages: Create a fake site-packages."
+    },
+    {
+      "path": "tests/static/index.html",
+      "language": "HTML",
+      "size_bytes": 22,
+      "loc": 1,
+      "symbols": [],
+      "imports": [],
+      "signature": "Path: tests/static/index.html"
+    },
+    {
+      "path": "tests/templates/_macro.html",
+      "language": "HTML",
+      "size_bytes": 55,
+      "loc": 1,
+      "symbols": [],
+      "imports": [],
+      "signature": "Path: tests/templates/_macro.html"
+    },
+    {
+      "path": "tests/templates/context_template.html",
+      "language": "HTML",
+      "size_bytes": 36,
+      "loc": 1,
+      "symbols": [],
+      "imports": [],
+      "signature": "Path: tests/templates/context_template.html"
+    },
+    {
+      "path": "tests/templates/escaping_template.html",
+      "language": "HTML",
+      "size_bytes": 147,
+      "loc": 6,
+      "symbols": [],
+      "imports": [],
+      "signature": "Path: tests/templates/escaping_template.html"
+    },
+    {
+      "path": "tests/templates/simple_template.html",
+      "language": "HTML",
+      "size_bytes": 23,
+      "loc": 1,
+      "symbols": [],
+      "imports": [],
+      "signature": "Path: tests/templates/simple_template.html"
+    },
+    {
+      "path": "tests/templates/template_filter.html",
+      "language": "HTML",
+      "size_bytes": 26,
+      "loc": 1,
+      "symbols": [],
+      "imports": [],
+      "signature": "Path: tests/templates/template_filter.html"
+    },
+    {
+      "path": "tests/templates/template_test.html",
+      "language": "HTML",
+      "size_bytes": 51,
+      "loc": 3,
+      "symbols": [],
+      "imports": [],
+      "signature": "Path: tests/templates/template_test.html"
+    },
+    {
+      "path": "tests/test_appctx.py",
+      "language": "Python",
+      "size_bytes": 6827,
+      "loc": 194,
+      "symbols": [
+        "test_basic_url_generation",
+        "test_url_generation_requires_server_name",
+        "test_url_generation_without_context_fails",
+        "test_request_context_means_app_context",
+        "test_app_context_provides_current_app",
+        "test_app_tearing_down",
+        "test_app_tearing_down_with_previous_exception",
+        "test_app_tearing_down_with_handled_exception_by_except_block",
+        "test_app_tearing_down_with_handled_exception_by_app_handler",
+        "test_app_tearing_down_with_unhandled_exception",
+        "test_app_ctx_globals_methods",
+        "test_custom_app_ctx_globals_class",
+        "test_context_refcounts",
+        "test_clean_pop",
+        "test_robust_teardown"
+      ],
+      "imports": [
+        "sys",
+        "pytest",
+        "flask",
+        "flask.globals",
+        "flask.testing"
+      ],
+      "signature": "Path: tests/test_appctx.py | Functions: test_basic_url_generation, test_url_generation_requires_server_name, test_url_generation_without_context_fails, test_request_context_means_app_context, test_app_context_provides_current_app, test_app_tearing_down, test_app_tearing_down_with_previous_exception, test_app_tearing_down_with_handled_exception_by_except_block, test_app_tearing_down_with_handled_exception_by_app_handler, test_app_tearing_down_with_unhandled_exception, test_app_ctx_globals_methods, test_custom_app_ctx_globals_class, test_context_refcounts, test_clean_pop, test_robust_teardown"
+    },
+    {
+      "path": "tests/test_apps/blueprintapp/__init__.py",
+      "language": "Python",
+      "size_bytes": 256,
+      "loc": 7,
+      "symbols": [],
+      "imports": [
+        "flask",
+        "blueprintapp.apps.admin",
+        "blueprintapp.apps.frontend"
+      ],
+      "signature": "Path: tests/test_apps/blueprintapp/__init__.py"
+    },
+    {
+      "path": "tests/test_apps/blueprintapp/apps/__init__.py",
+      "language": "Python",
+      "size_bytes": 0,
+      "loc": 0,
+      "symbols": [],
+      "imports": [],
+      "signature": "Path: tests/test_apps/blueprintapp/apps/__init__.py"
+    },
+    {
+      "path": "tests/test_apps/blueprintapp/apps/admin/__init__.py",
+      "language": "Python",
+      "size_bytes": 366,
+      "loc": 15,
+      "symbols": [
+        "index",
+        "index2"
+      ],
+      "imports": [
+        "flask"
+      ],
+      "signature": "Path: tests/test_apps/blueprintapp/apps/admin/__init__.py | Functions: index, index2"
+    },
+    {
+      "path": "tests/test_apps/blueprintapp/apps/admin/static/css/test.css",
+      "language": "CSS",
+      "size_bytes": 18,
+      "loc": 1,
+      "symbols": [],
+      "imports": [],
+      "signature": "Path: tests/test_apps/blueprintapp/apps/admin/static/css/test.css"
+    },
+    {
+      "path": "tests/test_apps/blueprintapp/apps/admin/templates/admin/index.html",
+      "language": "HTML",
+      "size_bytes": 21,
+      "loc": 1,
+      "symbols": [],
+      "imports": [],
+      "signature": "Path: tests/test_apps/blueprintapp/apps/admin/templates/admin/index.html"
+    },
+    {
+      "path": "tests/test_apps/blueprintapp/apps/frontend/__init__.py",
+      "language": "Python",
+      "size_bytes": 327,
+      "loc": 9,
+      "symbols": [
+        "index",
+        "missing_template"
+      ],
+      "imports": [
+        "flask"
+      ],
+      "signature": "Path: tests/test_apps/blueprintapp/apps/frontend/__init__.py | Functions: index, missing_template"
+    },
+    {
+      "path": "tests/test_apps/blueprintapp/apps/frontend/templates/frontend/index.html",
+      "language": "HTML",
+      "size_bytes": 24,
+      "loc": 1,
+      "symbols": [],
+      "imports": [],
+      "signature": "Path: tests/test_apps/blueprintapp/apps/frontend/templates/frontend/index.html"
+    },
+    {
+      "path": "tests/test_apps/cliapp/__init__.py",
+      "language": "Python",
+      "size_bytes": 0,
+      "loc": 0,
+      "symbols": [],
+      "imports": [],
+      "signature": "Path: tests/test_apps/cliapp/__init__.py"
+    },
+    {
+      "path": "tests/test_apps/cliapp/app.py",
+      "language": "Python",
+      "size_bytes": 52,
+      "loc": 2,
+      "symbols": [],
+      "imports": [
+        "flask"
+      ],
+      "signature": "Path: tests/test_apps/cliapp/app.py"
+    },
+    {
+      "path": "tests/test_apps/cliapp/factory.py",
+      "language": "Python",
+      "size_bytes": 169,
+      "loc": 7,
+      "symbols": [
+        "create_app",
+        "create_app2",
+        "no_app"
+      ],
+      "imports": [
+        "flask"
+      ],
+      "signature": "Path: tests/test_apps/cliapp/factory.py | Functions: create_app, create_app2, no_app"
+    },
+    {
+      "path": "tests/test_apps/cliapp/importerrorapp.py",
+      "language": "Python",
+      "size_bytes": 73,
+      "loc": 3,
+      "symbols": [],
+      "imports": [
+        "flask"
+      ],
+      "signature": "Path: tests/test_apps/cliapp/importerrorapp.py"
+    },
+    {
+      "path": "tests/test_apps/cliapp/inner1/__init__.py",
+      "language": "Python",
+      "size_bytes": 55,
+      "loc": 2,
+      "symbols": [],
+      "imports": [
+        "flask"
+      ],
+      "signature": "Path: tests/test_apps/cliapp/inner1/__init__.py"
+    },
+    {
+      "path": "tests/test_apps/cliapp/inner1/inner2/__init__.py",
+      "language": "Python",
+      "size_bytes": 0,
+      "loc": 0,
+      "symbols": [],
+      "imports": [],
+      "signature": "Path: tests/test_apps/cliapp/inner1/inner2/__init__.py"
+    },
+    {
+      "path": "tests/test_apps/cliapp/inner1/inner2/flask.py",
+      "language": "Python",
+      "size_bytes": 47,
+      "loc": 2,
+      "symbols": [],
+      "imports": [
+        "flask"
+      ],
+      "signature": "Path: tests/test_apps/cliapp/inner1/inner2/flask.py"
+    },
+    {
+      "path": "tests/test_apps/cliapp/multiapp.py",
+      "language": "Python",
+      "size_bytes": 67,
+      "loc": 3,
+      "symbols": [],
+      "imports": [
+        "flask"
+      ],
+      "signature": "Path: tests/test_apps/cliapp/multiapp.py"
+    },
+    {
+      "path": "tests/test_apps/helloworld/hello.py",
+      "language": "Python",
+      "size_bytes": 104,
+      "loc": 5,
+      "symbols": [
+        "hello"
+      ],
+      "imports": [
+        "flask"
+      ],
+      "signature": "Path: tests/test_apps/helloworld/hello.py | Functions: hello"
+    },
+    {
+      "path": "tests/test_apps/helloworld/wsgi.py",
+      "language": "Python",
+      "size_bytes": 36,
+      "loc": 1,
+      "symbols": [],
+      "imports": [
+        "hello"
+      ],
+      "signature": "Path: tests/test_apps/helloworld/wsgi.py"
+    },
+    {
+      "path": "tests/test_apps/subdomaintestmodule/__init__.py",
+      "language": "Python",
+      "size_bytes": 73,
+      "loc": 2,
+      "symbols": [],
+      "imports": [
+        "flask"
+      ],
+      "signature": "Path: tests/test_apps/subdomaintestmodule/__init__.py"
+    },
+    {
+      "path": "tests/test_async.py",
+      "language": "Python",
+      "size_bytes": 3335,
+      "loc": 104,
+      "symbols": [
+        "AppError",
+        "BlueprintError",
+        "AsyncView",
+        "AsyncMethodView",
+        "_async_app",
+        "test_async_route",
+        "test_async_error_handler",
+        "test_async_before_after_request"
+      ],
+      "imports": [
+        "asyncio",
+        "pytest",
+        "flask",
+        "flask.views"
+      ],
+      "signature": "Path: tests/test_async.py | Classes: AppError; BlueprintError; AsyncView(dispatch_request); AsyncMethodView(get, post) | Functions: _async_app, test_async_route, test_async_error_handler, test_async_before_after_request"
+    },
+    {
+      "path": "tests/test_basic.py",
+      "language": "Python",
+      "size_bytes": 54273,
+      "loc": 1487,
+      "symbols": [
+        "test_options_work",
+        "test_options_on_multiple_rules",
+        "test_method_route",
+        "test_method_route_no_methods",
+        "test_provide_automatic_options_attr_disable",
+        "test_provide_automatic_options_attr_enable",
+        "test_provide_automatic_options_arg_disable",
+        "test_provide_automatic_options_method_disable",
+        "test_request_dispatching",
+        "test_disallow_string_for_allowed_methods",
+        "test_url_mapping",
+        "test_werkzeug_routing",
+        "test_endpoint_decorator",
+        "test_session_accessed",
+        "test_session_path",
+        "test_session_using_application_root",
+        "test_session_using_session_settings",
+        "test_session_using_samesite_attribute",
+        "test_missing_session",
+        "test_session_secret_key_fallbacks",
+        "test_session_expiration",
+        "test_session_stored_last",
+        "test_session_special_types",
+        "test_session_cookie_setting",
+        "test_session_vary_cookie",
+        "test_session_refresh_vary",
+        "test_flashes",
+        "test_extended_flashing",
+        "test_request_processing",
+        "test_request_preprocessing_early_return",
+        "test_after_request_processing",
+        "test_teardown_request_handler",
+        "test_teardown_request_handler_debug_mode",
+        "test_teardown_request_handler_error",
+        "test_before_after_request_order",
+        "test_error_handling",
+        "test_error_handling_processing",
+        "test_baseexception_error_handling",
+        "test_before_request_and_routing_errors",
+        "test_user_error_handling",
+        "test_http_error_subclass_handling",
+        "test_errorhandler_precedence",
+        "test_trap_bad_request_key_error",
+        "test_trapping_of_all_http_exceptions",
+        "test_error_handler_after_processor_error",
+        "test_enctype_debug_helper",
+        "test_response_types",
+        "test_response_type_errors",
+        "test_make_response",
+        "test_make_response_with_response_instance",
+        "test_jsonify_no_prettyprint",
+        "test_jsonify_mimetype",
+        "test_json_dump_dataclass",
+        "test_jsonify_args_and_kwargs_check",
+        "test_url_generation",
+        "test_build_error_handler",
+        "test_build_error_handler_reraise",
+        "test_url_for_passes_special_values_to_build_error_handler",
+        "test_static_files",
+        "test_static_url_path",
+        "test_static_url_path_with_ending_slash",
+        "test_static_url_empty_path",
+        "test_static_url_empty_path_default",
+        "test_static_folder_with_pathlib_path",
+        "test_static_folder_with_ending_slash",
+        "test_static_route_with_host_matching",
+        "test_request_locals",
+        "test_server_name_matching",
+        "test_server_name_subdomain",
+        "test_exception_propagation",
+        "test_werkzeug_passthrough_errors",
+        "test_url_processors",
+        "test_inject_blueprint_url_defaults",
+        "test_nonascii_pathinfo",
+        "test_no_setup_after_first_request",
+        "test_routing_redirect_debugging",
+        "test_route_decorator_custom_endpoint",
+        "test_get_method_on_g",
+        "test_g_iteration_protocol",
+        "test_subdomain_basic_support",
+        "test_subdomain_matching",
+        "test_subdomain_matching_with_ports",
+        "test_subdomain_matching_other_name",
+        "test_multi_route_rules",
+        "test_multi_route_class_views",
+        "test_run_defaults",
+        "test_run_server_port",
+        "test_run_from_config",
+        "test_max_cookie_size",
+        "test_app_freed_on_zero_refcount"
+      ],
+      "imports": [
+        "gc",
+        "importlib.metadata",
+        "re",
+        "typing",
+        "uuid",
+        "weakref",
+        "contextlib",
+        "datetime",
+        "functools",
+        "platform",
+        "pytest",
+        "werkzeug.serving",
+        "markupsafe",
+        "werkzeug.exceptions",
+        "werkzeug.http",
+        "werkzeug.routing",
+        "flask",
+        "flask.globals",
+        "flask.testing"
+      ],
+      "signature": "Path: tests/test_basic.py | Functions: test_options_work, test_options_on_multiple_rules, test_method_route, test_method_route_no_methods, test_provide_automatic_options_attr_disable, test_provide_automatic_options_attr_enable, test_provide_automatic_options_arg_disable, test_provide_automatic_options_method_disable, test_request_dispatching, test_disallow_string_for_allowed_methods, test_url_mapping, test_werkzeug_routing, test_endpoint_decorator, test_session_accessed, test_session_path, test_session_using_application_root, test_session_using_session_settings, test_session_using_samesite_at\u2026"
+    },
+    {
+      "path": "tests/test_blueprints.py",
+      "language": "Python",
+      "size_bytes": 31287,
+      "loc": 790,
+      "symbols": [
+        "test_blueprint_specific_error_handling",
+        "test_blueprint_specific_user_error_handling",
+        "test_blueprint_app_error_handling",
+        "test_blueprint_prefix_slash",
+        "test_blueprint_url_defaults",
+        "test_blueprint_url_processors",
+        "test_templates_and_static",
+        "test_default_static_max_age",
+        "test_templates_list",
+        "test_dotted_name_not_allowed",
+        "test_empty_name_not_allowed",
+        "test_dotted_names_from_app",
+        "test_empty_url_defaults",
+        "test_route_decorator_custom_endpoint",
+        "test_route_decorator_custom_endpoint_with_dots",
+        "test_endpoint_decorator",
+        "test_template_filter",
+        "test_add_template_filter",
+        "test_template_filter_with_name",
+        "test_add_template_filter_with_name",
+        "test_template_filter_with_template",
+        "test_template_filter_after_route_with_template",
+        "test_add_template_filter_with_template",
+        "test_template_filter_with_name_and_template",
+        "test_add_template_filter_with_name_and_template",
+        "test_template_test",
+        "test_add_template_test",
+        "test_template_test_with_name",
+        "test_add_template_test_with_name",
+        "test_template_test_with_template",
+        "test_template_test_after_route_with_template",
+        "test_add_template_test_with_template",
+        "test_template_test_with_name_and_template",
+        "test_add_template_test_with_name_and_template",
+        "test_context_processing",
+        "test_template_global",
+        "test_request_processing",
+        "test_app_request_processing",
+        "test_app_url_processors",
+        "test_nested_blueprint",
+        "test_nested_callback_order",
+        "test_nesting_url_prefixes",
+        "test_nesting_subdomains",
+        "test_child_and_parent_subdomain",
+        "test_unique_blueprint_names",
+        "test_self_registration",
+        "test_blueprint_renaming"
+      ],
+      "imports": [
+        "pytest",
+        "jinja2",
+        "flask"
+      ],
+      "signature": "Path: tests/test_blueprints.py | Functions: test_blueprint_specific_error_handling, test_blueprint_specific_user_error_handling, test_blueprint_app_error_handling, test_blueprint_prefix_slash, test_blueprint_url_defaults, test_blueprint_url_processors, test_templates_and_static, test_default_static_max_age, test_templates_list, test_dotted_name_not_allowed, test_empty_name_not_allowed, test_dotted_names_from_app, test_empty_url_defaults, test_route_decorator_custom_endpoint, test_route_decorator_custom_endpoint_with_dots, test_endpoint_decorator, test_template_filter, test_add_template_filter\u2026"
+    },
+    {
+      "path": "tests/test_cli.py",
+      "language": "Python",
+      "size_bytes": 20303,
+      "loc": 536,
+      "symbols": [
+        "runner",
+        "test_cli_name",
+        "test_find_best_app",
+        "test_prepare_import",
+        "test_locate_app",
+        "test_locate_app_raises",
+        "test_locate_app_suppress_raise",
+        "test_get_version",
+        "test_scriptinfo",
+        "test_app_cli_has_app_context",
+        "test_with_appcontext",
+        "test_appgroup_app_context",
+        "test_flaskgroup_app_context",
+        "test_flaskgroup_debug",
+        "test_flaskgroup_nested",
+        "test_no_command_echo_loading_error",
+        "test_help_echo_loading_error",
+        "test_help_echo_exception",
+        "TestRoutes",
+        "dotenv_not_available",
+        "test_load_dotenv",
+        "test_dotenv_path",
+        "test_dotenv_optional",
+        "test_disable_dotenv_from_env",
+        "test_run_cert_path",
+        "test_run_cert_adhoc",
+        "test_run_cert_import",
+        "test_run_cert_no_ssl",
+        "test_cli_blueprints",
+        "test_cli_empty",
+        "test_run_exclude_patterns"
+      ],
+      "imports": [
+        "importlib.metadata",
+        "os",
+        "platform",
+        "ssl",
+        "sys",
+        "types",
+        "functools",
+        "pathlib",
+        "click",
+        "pytest",
+        "click.testing",
+        "flask",
+        "flask.cli"
+      ],
+      "signature": "Path: tests/test_cli.py | Classes: TestRoutes(app, invoke, expect_order, test_simple, test_sort, test_all_methods, test_no_routes, test_subdomain, test_host) | Functions: runner, test_cli_name, test_find_best_app, test_prepare_import, test_locate_app, test_locate_app_raises, test_locate_app_suppress_raise, test_get_version, test_scriptinfo, test_app_cli_has_app_context, test_with_appcontext, test_appgroup_app_context, test_flaskgroup_app_context, test_flaskgroup_debug, test_flaskgroup_nested, test_no_command_echo_loading_error, test_help_echo_loading_error, test_help_echo_exception, dotenv_no\u2026"
+    },
+    {
+      "path": "tests/test_config.py",
+      "language": "Python",
+      "size_bytes": 7748,
+      "loc": 193,
+      "symbols": [
+        "common_object_test",
+        "test_config_from_pyfile",
+        "test_config_from_object",
+        "test_config_from_file_json",
+        "test_config_from_file_toml",
+        "test_from_prefixed_env",
+        "test_from_prefixed_env_custom_prefix",
+        "test_from_prefixed_env_nested",
+        "test_config_from_mapping",
+        "test_config_from_class",
+        "test_config_from_envvar",
+        "test_config_from_envvar_missing",
+        "test_config_missing",
+        "test_config_missing_file",
+        "test_custom_config_class",
+        "test_session_lifetime",
+        "test_get_namespace",
+        "test_from_pyfile_weird_encoding"
+      ],
+      "imports": [
+        "json",
+        "os",
+        "pytest",
+        "flask"
+      ],
+      "signature": "Path: tests/test_config.py | Functions: common_object_test, test_config_from_pyfile, test_config_from_object, test_config_from_file_json, test_config_from_file_toml, test_from_prefixed_env, test_from_prefixed_env_custom_prefix, test_from_prefixed_env_nested, test_config_from_mapping, test_config_from_class, test_config_from_envvar, test_config_from_envvar_missing, test_config_missing, test_config_missing_file, test_custom_config_class, test_session_lifetime, test_get_namespace, test_from_pyfile_weird_encoding"
+    },
+    {
+      "path": "tests/test_converters.py",
+      "language": "Python",
+      "size_bytes": 1093,
+      "loc": 29,
+      "symbols": [
+        "test_custom_converters",
+        "test_context_available"
+      ],
+      "imports": [
+        "werkzeug.routing",
+        "flask"
+      ],
+      "signature": "Path: tests/test_converters.py | Functions: test_custom_converters, test_context_available"
+    },
+    {
+      "path": "tests/test_helpers.py",
+      "language": "Python",
+      "size_bytes": 11218,
+      "loc": 273,
+      "symbols": [
+        "FakePath",
+        "PyBytesIO",
+        "TestSendfile",
+        "TestUrlFor",
+        "test_redirect_no_app",
+        "test_redirect_with_app",
+        "test_abort_no_app",
+        "test_app_aborter_class",
+        "test_abort_with_app",
+        "TestNoImports",
+        "TestStreaming",
+        "TestHelpers",
+        "test_open_resource",
+        "test_open_resource_exceptions",
+        "test_open_resource_with_encoding"
+      ],
+      "imports": [
+        "io",
+        "os",
+        "pytest",
+        "werkzeug.exceptions",
+        "flask",
+        "flask.helpers"
+      ],
+      "signature": "Path: tests/test_helpers.py | Classes: FakePath(__init__, __fspath__); PyBytesIO(__init__, __getattr__); TestSendfile(test_send_file, test_static_file, test_send_from_directory); TestUrlFor(test_url_for_with_anchor, test_url_for_with_scheme, test_url_for_with_scheme_not_external, test_url_for_with_alternating_schemes, test_url_with_method, test_url_for_with_self); TestNoImports(test_name_with_import_error); TestStreaming(test_streaming_with_context, test_streaming_with_context_as_decorator, test_streaming_with_context_and_custom_close, test_stream_keeps_session, test_async_view); TestHelpers(\u2026"
+    },
+    {
+      "path": "tests/test_instance_config.py",
+      "language": "Python",
+      "size_bytes": 3317,
+      "loc": 80,
+      "symbols": [
+        "test_explicit_instance_paths",
+        "test_uninstalled_module_paths",
+        "test_uninstalled_package_paths",
+        "test_uninstalled_namespace_paths",
+        "test_installed_module_paths",
+        "test_installed_package_paths",
+        "test_prefix_package_paths"
+      ],
+      "imports": [
+        "os",
+        "pytest",
+        "flask"
+      ],
+      "signature": "Path: tests/test_instance_config.py | Functions: test_explicit_instance_paths, test_uninstalled_module_paths, test_uninstalled_package_paths, test_uninstalled_namespace_paths, test_installed_module_paths, test_installed_package_paths, test_prefix_package_paths"
+    },
+    {
+      "path": "tests/test_json.py",
+      "language": "Python",
+      "size_bytes": 8741,
+      "loc": 272,
+      "symbols": [
+        "test_bad_request_debug_message",
+        "test_json_bad_requests",
+        "test_json_custom_mimetypes",
+        "test_json_as_unicode",
+        "test_json_dump_to_file",
+        "test_jsonify_basic_types",
+        "test_jsonify_dicts",
+        "test_jsonify_arrays",
+        "test_jsonify_datetime",
+        "FixedOffset",
+        "test_jsonify_aware_datetimes",
+        "test_jsonify_uuid_types",
+        "test_json_decimal",
+        "test_json_attr",
+        "test_tojson_filter",
+        "test_json_customization",
+        "_has_encoding",
+        "test_json_key_sorting",
+        "test_html_method"
+      ],
+      "imports": [
+        "datetime",
+        "decimal",
+        "io",
+        "uuid",
+        "pytest",
+        "werkzeug.http",
+        "flask",
+        "flask.json.provider"
+      ],
+      "signature": "Path: tests/test_json.py | Classes: FixedOffset(utcoffset, tzname, dst, __init__) | Functions: test_bad_request_debug_message, test_json_bad_requests, test_json_custom_mimetypes, test_json_as_unicode, test_json_dump_to_file, test_jsonify_basic_types, test_jsonify_dicts, test_jsonify_arrays, test_jsonify_datetime, test_jsonify_aware_datetimes, test_jsonify_uuid_types, test_json_decimal, test_json_attr, test_tojson_filter, test_json_customization, _has_encoding, test_json_key_sorting, test_html_method | Docs: test_jsonify_arrays: Test jsonify of lists and args unpacking.; FixedOffset: Fixed off\u2026"
+    },
+    {
+      "path": "tests/test_json_tag.py",
+      "language": "Python",
+      "size_bytes": 1998,
+      "loc": 64,
+      "symbols": [
+        "test_dump_load_unchanged",
+        "test_duplicate_tag",
+        "test_custom_tag",
+        "test_tag_interface",
+        "test_tag_order"
+      ],
+      "imports": [
+        "datetime",
+        "uuid",
+        "pytest",
+        "markupsafe",
+        "flask.json.tag"
+      ],
+      "signature": "Path: tests/test_json_tag.py | Functions: test_dump_load_unchanged, test_duplicate_tag, test_custom_tag, test_tag_interface, test_tag_order"
+    },
+    {
+      "path": "tests/test_logging.py",
+      "language": "Python",
+      "size_bytes": 2529,
+      "loc": 69,
+      "symbols": [
+        "reset_logging",
+        "test_logger",
+        "test_logger_debug",
+        "test_existing_handler",
+        "test_wsgi_errors_stream",
+        "test_has_level_handler",
+        "test_log_view_exception"
+      ],
+      "imports": [
+        "logging",
+        "sys",
+        "io",
+        "pytest",
+        "flask.logging"
+      ],
+      "signature": "Path: tests/test_logging.py | Functions: reset_logging, test_logger, test_logger_debug, test_existing_handler, test_wsgi_errors_stream, test_has_level_handler, test_log_view_exception"
+    },
+    {
+      "path": "tests/test_regression.py",
+      "language": "Python",
+      "size_bytes": 712,
+      "loc": 22,
+      "symbols": [
+        "test_aborting"
+      ],
+      "imports": [
+        "flask"
+      ],
+      "signature": "Path: tests/test_regression.py | Functions: test_aborting"
+    },
+    {
+      "path": "tests/test_reqctx.py",
+      "language": "Python",
+      "size_bytes": 6696,
+      "loc": 190,
+      "symbols": [
+        "test_teardown_on_pop",
+        "test_teardown_with_previous_exception",
+        "test_teardown_with_handled_exception",
+        "test_proper_test_request_context",
+        "test_context_binding",
+        "test_context_test",
+        "test_manual_context_binding",
+        "test_copy_context_thread",
+        "test_session_error_pops_context",
+        "test_session_dynamic_cookie_name"
+      ],
+      "imports": [
+        "__future__",
+        "collections.abc",
+        "warnings",
+        "concurrent",
+        "pytest",
+        "flask",
+        "flask.sessions",
+        "flask.testing"
+      ],
+      "signature": "Path: tests/test_reqctx.py | Functions: test_teardown_on_pop, test_teardown_with_previous_exception, test_teardown_with_handled_exception, test_proper_test_request_context, test_context_binding, test_context_test, test_manual_context_binding, test_copy_context_thread, test_session_error_pops_context, test_session_dynamic_cookie_name"
+    },
+    {
+      "path": "tests/test_request.py",
+      "language": "Python",
+      "size_bytes": 1902,
+      "loc": 53,
+      "symbols": [
+        "test_max_content_length",
+        "test_limit_config",
+        "test_trusted_hosts_config"
+      ],
+      "imports": [
+        "__future__",
+        "flask",
+        "flask.testing"
+      ],
+      "signature": "Path: tests/test_request.py | Functions: test_max_content_length, test_limit_config, test_trusted_hosts_config"
+    },
+    {
+      "path": "tests/test_session_interface.py",
+      "language": "Python",
+      "size_bytes": 784,
+      "loc": 21,
+      "symbols": [
+        "test_open_session_with_endpoint"
+      ],
+      "imports": [
+        "flask",
+        "flask.globals",
+        "flask.sessions"
+      ],
+      "signature": "Path: tests/test_session_interface.py | Functions: test_open_session_with_endpoint | Docs: test_open_session_with_endpoint: If request.endpoint (or other URL matching behavior) is needed"
+    },
+    {
+      "path": "tests/test_signals.py",
+      "language": "Python",
+      "size_bytes": 4864,
+      "loc": 139,
+      "symbols": [
+        "test_template_rendered",
+        "test_before_render_template",
+        "test_request_signals",
+        "test_request_exception_signal",
+        "test_appcontext_signals",
+        "test_flash_signal",
+        "test_appcontext_tearing_down_signal"
+      ],
+      "imports": [
+        "flask"
+      ],
+      "signature": "Path: tests/test_signals.py | Functions: test_template_rendered, test_before_render_template, test_request_signals, test_request_exception_signal, test_appcontext_signals, test_flash_signal, test_appcontext_tearing_down_signal"
+    },
+    {
+      "path": "tests/test_subclassing.py",
+      "language": "Python",
+      "size_bytes": 480,
+      "loc": 15,
+      "symbols": [
+        "test_suppressed_exception_logging"
+      ],
+      "imports": [
+        "io",
+        "flask"
+      ],
+      "signature": "Path: tests/test_subclassing.py | Functions: test_suppressed_exception_logging"
+    },
+    {
+      "path": "tests/test_templating.py",
+      "language": "Python",
+      "size_bytes": 15403,
+      "loc": 387,
+      "symbols": [
+        "test_context_processing",
+        "test_original_win",
+        "test_simple_stream",
+        "test_request_less_rendering",
+        "test_standard_context",
+        "test_escaping",
+        "test_no_escaping",
+        "test_escaping_without_template_filename",
+        "test_macros",
+        "test_template_filter",
+        "test_add_template_filter",
+        "test_template_filter_with_name",
+        "test_add_template_filter_with_name",
+        "test_template_filter_with_template",
+        "test_add_template_filter_with_template",
+        "test_template_filter_with_name_and_template",
+        "test_add_template_filter_with_name_and_template",
+        "test_template_test",
+        "test_add_template_test",
+        "test_template_test_with_name",
+        "test_add_template_test_with_name",
+        "test_template_test_with_template",
+        "test_add_template_test_with_template",
+        "test_template_test_with_name_and_template",
+        "test_add_template_test_with_name_and_template",
+        "test_add_template_global",
+        "test_custom_template_loader",
+        "test_iterable_loader",
+        "test_templates_auto_reload",
+        "test_templates_auto_reload_debug_run",
+        "test_template_loader_debugging",
+        "test_custom_jinja_env"
+      ],
+      "imports": [
+        "logging",
+        "pytest",
+        "werkzeug.serving",
+        "jinja2",
+        "markupsafe",
+        "flask"
+      ],
+      "signature": "Path: tests/test_templating.py | Functions: test_context_processing, test_original_win, test_simple_stream, test_request_less_rendering, test_standard_context, test_escaping, test_no_escaping, test_escaping_without_template_filename, test_macros, test_template_filter, test_add_template_filter, test_template_filter_with_name, test_add_template_filter_with_name, test_template_filter_with_template, test_add_template_filter_with_template, test_template_filter_with_name_and_template, test_add_template_filter_with_name_and_template, test_template_test, test_add_template_test, test_template_test_wit\u2026"
+    },
+    {
+      "path": "tests/test_testing.py",
+      "language": "Python",
+      "size_bytes": 10563,
+      "loc": 286,
+      "symbols": [
+        "test_environ_defaults_from_config",
+        "test_environ_defaults",
+        "test_environ_base_default",
+        "test_environ_base_modified",
+        "test_client_open_environ",
+        "test_specify_url_scheme",
+        "test_path_is_url",
+        "test_environbuilder_json_dumps",
+        "test_blueprint_with_subdomain",
+        "test_redirect_session",
+        "test_session_transactions",
+        "test_session_transaction_ipv6",
+        "test_session_transactions_no_null_sessions",
+        "test_session_transactions_keep_context",
+        "test_session_transaction_needs_cookies",
+        "test_test_client_context_binding",
+        "test_reuse_client",
+        "test_full_url_request",
+        "test_json_request_and_response",
+        "test_client_json_no_app_context",
+        "test_subdomain",
+        "test_nosubdomain",
+        "test_cli_runner_class",
+        "test_cli_invoke",
+        "test_cli_custom_obj",
+        "test_client_pop_all_preserved"
+      ],
+      "imports": [
+        "importlib.metadata",
+        "click",
+        "pytest",
+        "flask",
+        "flask.cli",
+        "flask.globals",
+        "flask.json",
+        "flask.testing"
+      ],
+      "signature": "Path: tests/test_testing.py | Functions: test_environ_defaults_from_config, test_environ_defaults, test_environ_base_default, test_environ_base_modified, test_client_open_environ, test_specify_url_scheme, test_path_is_url, test_environbuilder_json_dumps, test_blueprint_with_subdomain, test_redirect_session, test_session_transactions, test_session_transaction_ipv6, test_session_transactions_no_null_sessions, test_session_transactions_keep_context, test_session_transaction_needs_cookies, test_test_client_context_binding, test_reuse_client, test_full_url_request, test_json_request_and_response,\u2026"
+    },
+    {
+      "path": "tests/test_user_error_handler.py",
+      "language": "Python",
+      "size_bytes": 8436,
+      "loc": 215,
+      "symbols": [
+        "test_error_handler_no_match",
+        "test_error_handler_subclass",
+        "test_error_handler_http_subclass",
+        "test_error_handler_blueprint",
+        "test_default_error_handler",
+        "TestGenericHandlers"
+      ],
+      "imports": [
+        "pytest",
+        "werkzeug.exceptions",
+        "flask"
+      ],
+      "signature": "Path: tests/test_user_error_handler.py | Classes: TestGenericHandlers(app, report_error, test_handle_class_or_code, test_handle_generic_http, test_handle_generic) | Functions: test_error_handler_no_match, test_error_handler_subclass, test_error_handler_http_subclass, test_error_handler_blueprint, test_default_error_handler | Docs: TestGenericHandlers: Test how very generic handlers are dispatched to.; TestGenericHandlers.test_handle_class_or_code: ``InternalServerError`` and ``500`` are aliases, they should; TestGenericHandlers.test_handle_generic_http: ``HTTPException`` should only receive `\u2026"
+    },
+    {
+      "path": "tests/test_views.py",
+      "language": "Python",
+      "size_bytes": 7058,
+      "loc": 187,
+      "symbols": [
+        "common_test",
+        "test_basic_view",
+        "test_method_based_view",
+        "test_view_patching",
+        "test_view_inheritance",
+        "test_view_decorators",
+        "test_view_provide_automatic_options_attr_disable",
+        "test_view_provide_automatic_options_attr_enable",
+        "test_provide_automatic_options_method_disable",
+        "test_implicit_head",
+        "test_explicit_head",
+        "test_endpoint_override",
+        "test_methods_var_inheritance",
+        "test_multiple_inheritance",
+        "test_remove_method_from_parent",
+        "test_init_once"
+      ],
+      "imports": [
+        "pytest",
+        "flask.views",
+        "flask.testing"
+      ],
+      "signature": "Path: tests/test_views.py | Functions: common_test, test_basic_view, test_method_based_view, test_view_patching, test_view_inheritance, test_view_decorators, test_view_provide_automatic_options_attr_disable, test_view_provide_automatic_options_attr_enable, test_provide_automatic_options_method_disable, test_implicit_head, test_explicit_head, test_endpoint_override, test_methods_var_inheritance, test_multiple_inheritance, test_remove_method_from_parent, test_init_once | Docs: test_view_provide_automatic_options_attr_disable: Automatic options can be disabled by the view class attribute.; test_\u2026"
+    },
+    {
+      "path": "tests/type_check/typing_app_decorators.py",
+      "language": "Python",
+      "size_bytes": 589,
+      "loc": 18,
+      "symbols": [
+        "after_sync",
+        "after_async",
+        "before_sync",
+        "before_async",
+        "teardown_sync",
+        "teardown_async"
+      ],
+      "imports": [
+        "__future__",
+        "flask"
+      ],
+      "signature": "Path: tests/type_check/typing_app_decorators.py | Functions: after_sync, after_async, before_sync, before_async, teardown_sync, teardown_async"
+    },
+    {
+      "path": "tests/type_check/typing_error_handler.py",
+      "language": "Python",
+      "size_bytes": 647,
+      "loc": 21,
+      "symbols": [
+        "handle_400",
+        "handle_custom",
+        "handle_accept_base",
+        "handle_multiple"
+      ],
+      "imports": [
+        "__future__",
+        "http",
+        "werkzeug.exceptions",
+        "flask"
+      ],
+      "signature": "Path: tests/type_check/typing_error_handler.py | Functions: handle_400, handle_custom, handle_accept_base, handle_multiple"
+    },
+    {
+      "path": "tests/type_check/typing_route.py",
+      "language": "Python",
+      "size_bytes": 2532,
+      "loc": 71,
+      "symbols": [
+        "hello_str",
+        "hello_bytes",
+        "hello_json",
+        "hello_json_dict",
+        "hello_json_list",
+        "StatusJSON",
+        "typed_dict",
+        "hello_generator",
+        "hello_generator_expression",
+        "hello_iterator",
+        "tuple_status",
+        "tuple_status_enum",
+        "tuple_headers",
+        "return_template",
+        "return_template_stream",
+        "async_route",
+        "RenderTemplateView"
+      ],
+      "imports": [
+        "__future__",
+        "typing",
+        "http",
+        "flask",
+        "flask.templating",
+        "flask.views",
+        "flask.wrappers"
+      ],
+      "signature": "Path: tests/type_check/typing_route.py | Classes: StatusJSON; RenderTemplateView(dispatch_request, __init__) | Functions: hello_str, hello_bytes, hello_json, hello_json_dict, hello_json_list, typed_dict, hello_generator, hello_generator_expression, hello_iterator, tuple_status, tuple_status_enum, tuple_headers, return_template, return_template_stream, async_route"
+    }
+  ]
+}

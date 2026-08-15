@@ -349,7 +349,32 @@ The real Codex/Claude transcript adapter has been dropped from the hackathon
 scope. A polished, reliable metric and flip demonstration is more valuable than
 a second incomplete ingestion path.
 
+## Step 5 — complete
+
+Step 5 built a polished static frontend in `docs/` for GitHub Pages. Instead of
+traditional slides, the demonstration unfolds through a chat-style audit:
+
+- the original question and confident agent answer;
+- animated audit stages and the 5.51% headline metric;
+- a 108-tile evidence map sized by relevance and lit by examination depth;
+- red borders around the two claim-contradicting files;
+- extracted claims and their contradiction status;
+- the adjudicated 0.540 / 0.312 / 0.020 evidence cliff;
+- evidence injection and the signed-but-readable corrected answer;
+- side-by-side security-property highlighting;
+- present mode for projector delivery.
+
+The frontend also accepts a repository folder for browser-local territory
+inventory and accepts all five Scotoma JSON artifacts for visualizing another
+investigation. GitHub Pages cannot safely execute the Python agent or store an
+OpenAI key, so full analysis remains an honest CLI/backend boundary.
+
+The real Flask artifacts are bundled under `docs/data/`; no demo metric is
+mocked. A GitHub Actions workflow deploys `docs/` to Pages, and the root README
+links to the live experience.
+
 ## Next step
 
-Build the terminal/HTML presentation report around the completed live evidence,
-then rehearse the demo and pitch.
+Rehearse the interactive demo and pitch, then add a zero-API evaluation comparing
+random, semantic-only, composite, and adjudicated ranking plus a negative
+control if time remains.
