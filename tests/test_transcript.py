@@ -49,3 +49,15 @@ def test_reports_claude_login_failure() -> None:
         assert "not logged in" in str(error).lower()
     else:
         raise AssertionError("Expected login failure")
+
+
+def test_parses_codex_response_items_and_exec_calls() -> None:
+    raw = _jsonl(
+        {"type": "response_item", "payload": {"type": "message", "role": "user", "content": [{"type": "input_text", "text": "Can coverage be gamed?"}]}},
+        {"type": "response_item", "payload": {"type": "custom_tool_call", "name": "exec", "input": "{\"cmd\":\"sed -n '1,200p' scotoma/rank.py\"}"}},
+        {"type": "response_item", "payload": {"type": "message", "role": "assistant", "content": [{"type": "output_text", "text": "Grepping alone receives partial depth."}]}},
+    )
+    trace = parse_transcript(raw, "/repo", ["scotoma/rank.py"], vendor="codex")
+    assert trace["question"] == "Can coverage be gamed?"
+    assert trace["answer"] == "Grepping alone receives partial depth."
+    assert trace["examined"] == {"scotoma/rank.py": 0.6}

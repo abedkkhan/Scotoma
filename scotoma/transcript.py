@@ -51,6 +51,8 @@ def _content(event: dict[str, Any]) -> Any:
     if isinstance(message, dict):
         return message.get("content")
     payload = event.get("payload")
+    if isinstance(payload, dict) and payload.get("type") == "message":
+        return payload.get("content")
     if isinstance(payload, dict) and isinstance(payload.get("message"), dict):
         return payload["message"].get("content")
     return event.get("content")
@@ -100,7 +102,7 @@ def _tool_blocks(event: dict[str, Any]) -> Iterable[tuple[str, dict[str, Any], s
                 continue
             yield str(block.get("name", "")), block.get("input") or block.get("arguments") or {}, ""
     item = event.get("item") or event.get("payload")
-    if isinstance(item, dict) and item.get("type") in {"function_call", "tool_call"}:
+    if isinstance(item, dict) and item.get("type") in {"function_call", "tool_call", "custom_tool_call"}:
         args = item.get("arguments") or item.get("input") or {}
         if isinstance(args, str):
             try:
@@ -125,7 +127,8 @@ def parse_transcript(
     model = vendor if vendor != "auto" else "imported-agent"
     tools: list[tuple[str, dict[str, Any], str]] = []
     for event in events:
-        role = event.get("type") or event.get("role")
+        payload = event.get("payload")
+        role = (payload.get("role") if isinstance(payload, dict) else None) or event.get("type") or event.get("role")
         content_text = _text(_content(event))
         if role in {"user", "input", "user_message"} and content_text:
             user_texts.append(content_text)
@@ -134,6 +137,8 @@ def parse_transcript(
         message = event.get("message")
         if isinstance(message, dict):
             model = message.get("model") or model
+        if event.get("type") == "session_meta" and isinstance(payload, dict):
+            model = payload.get("model") or model
         tools.extend(_tool_blocks(event))
 
     result_texts = [str(event.get("result", "")).strip() for event in events if event.get("result")]
@@ -165,6 +170,18 @@ def parse_transcript(
             depth = DEPTH_SEARCH_HIT if lowered in _SEARCH_NAMES else DEPTH_LISTED
             for hit in hits - {None}:
                 recorder.examine(hit, depth)
+        elif lowered in {"exec", "exec_command", "shell", "bash"}:
+            serialized = json.dumps(args, ensure_ascii=False)
+            command = str(args.get("cmd") or args.get("command") or args.get("input") or "").lower()
+            if re.search(r"\b(cat|sed|head|tail|less)\b", command):
+                depth = DEPTH_READ_TRUNCATED
+            elif re.search(r"\b(rg|grep)\b", command):
+                depth = DEPTH_SEARCH_HIT
+            else:
+                depth = DEPTH_LISTED
+            for known_path in known:
+                if known_path in serialized or PurePosixPath(known_path).name in serialized:
+                    recorder.examine(known_path, depth)
         recorder.record_tool(name, args, summary or "Imported from session log")
     trace = recorder.finish(answer)
     trace["source"] = {"vendor": vendor, "event_count": len(events), "imported": True}
