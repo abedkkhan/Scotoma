@@ -17,6 +17,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from .adjudicate import adjudicate, run_flip
 from .agent import run_agent
+from .evaluate import evaluate_rankers
 from .index import build_index
 from .rank import calculate_coverage
 
@@ -140,6 +141,7 @@ def _run_pipeline(job_id: str, repo_path: Path, question: str) -> None:
             coverage,
             cache_path=str(CACHE_ROOT / "adjudication_cache.json"),
         )
+        evaluation = evaluate_rankers(coverage, adjudication)
 
         _update_job(job_id, stage="flip", progress=88)
         flip = run_flip(
@@ -157,6 +159,7 @@ def _run_pipeline(job_id: str, repo_path: Path, question: str) -> None:
                 "coverage": coverage,
                 "adjudication": adjudication,
                 "flip": flip,
+                "evaluation": evaluation,
             },
         )
     except Exception as error:  # job boundary: surface a stable message to polling clients

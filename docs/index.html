@@ -115,6 +115,7 @@
             <button class="active" data-tab="coverage">Coverage</button>
             <button data-tab="claims">Claims</button>
             <button data-tab="evidence">Evidence</button>
+            <button data-tab="evaluation">Eval</button>
           </div>
 
           <section class="tab-panel active" id="coveragePanel">
@@ -133,6 +134,13 @@
             <div class="panel-title"><div><span class="eyebrow">CLAIM ADJUDICATION</span><h2>Ranked blind spots</h2></div></div>
             <div id="evidenceList" class="evidence-list"></div>
             <button id="injectEvidence" class="inject-btn">Inject top evidence & rerun <span>→</span></button>
+          </section>
+
+          <section class="tab-panel" id="evaluationPanel">
+            <div class="panel-title"><div><span class="eyebrow">FLIP-VERIFIED GROUND TRUTH</span><h2>Did ranking improve?</h2></div></div>
+            <p class="panel-help">Two files changed the conclusion. Four rankers are scored against their known positions with zero new model calls.</p>
+            <div id="evaluationList" class="evaluation-list"></div>
+            <div class="eval-ground-truth"><span>GROUND TRUTH</span><b>json/tag.py</b><b>sessions.py</b></div>
           </section>
         </aside>
       </section>

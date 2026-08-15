@@ -1,0 +1,42 @@
+{
+  "ground_truth": [
+    "src/flask/json/tag.py",
+    "src/flask/sessions.py"
+  ],
+  "ground_truth_basis": "Files adjudicated as contradictory and verified by the conclusion flip test.",
+  "random_trials": 1000,
+  "rankers": {
+    "random": {
+      "recall_at_2": 0.018,
+      "mrr": 0.0815,
+      "ndcg_at_5": 0.0335
+    },
+    "semantic_only": {
+      "recall_at_2": 0.5,
+      "mrr": 1.0,
+      "ndcg_at_5": 0.6131,
+      "relevant_ranks": [
+        1,
+        6
+      ]
+    },
+    "three_signal_composite": {
+      "recall_at_2": 0.0,
+      "mrr": 0.1,
+      "ndcg_at_5": 0.0,
+      "relevant_ranks": [
+        10,
+        16
+      ]
+    },
+    "claim_adjudicated": {
+      "recall_at_2": 1.0,
+      "mrr": 1.0,
+      "ndcg_at_5": 1.0,
+      "relevant_ranks": [
+        1,
+        2
+      ]
+    }
+  }
+}

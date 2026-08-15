@@ -403,3 +403,19 @@ account and adding `OPENAI_API_KEY`; GitHub Pages cannot host Python itself.
 
 Deploy the API through the Render Blueprint, configure its URL/token in the
 frontend, then rehearse the live and fallback demo paths.
+
+## Offline evaluation
+
+The flip-verified contradictory files provide ground truth without new model
+calls. `scotoma evaluate` compares four rankers:
+
+```text
+                         Recall@2   MRR    NDCG@5   relevant ranks
+Random (1,000 trials)      0.018   0.082    0.034   —
+Semantic only              0.500   1.000    0.613   [1, 6]
+Three-signal composite     0.000   0.100    0.000   [10, 16]
+Claim adjudicated          1.000   1.000    1.000   [1, 2]
+```
+
+This evaluation is included as a frontend tab and is generated automatically
+for hosted audits. Eighteen tests pass.

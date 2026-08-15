@@ -9,10 +9,12 @@ embeddings_cache.json
 adjudication.json
 adjudication_cache.json
 flip.json
+evaluation.json
 !docs/data/index.json
 !docs/data/trace.json
 !docs/data/coverage.json
 !docs/data/adjudication.json
 !docs/data/flip.json
+!docs/data/evaluation.json
 targets/
 .pytest_cache/

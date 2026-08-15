@@ -200,6 +200,9 @@ Short alternative:
   asynchronous full-pipeline jobs, polling, CORS/access-token controls,
   Dockerfile, Render Blueprint, and Pages client integration. Sixteen tests
   pass.
+- Zero-API evaluation added: adjudicated Recall@2/MRR/NDCG@5 are all 1.0,
+  versus composite Recall@2 0.0 and semantic Recall@2 0.5. Results appear in
+  the frontend and hosted audit output.
 - Next action: connect a hosting account, set `OPENAI_API_KEY`, then rehearse
   live and precomputed fallback demo paths.
 

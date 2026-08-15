@@ -1,10 +1,10 @@
-const state={index:null,trace:null,coverage:null,adjudication:null,flip:null,audited:false,selectedRepoFiles:[],repoName:'Flask'};
+const state={index:null,trace:null,coverage:null,adjudication:null,flip:null,evaluation:null,audited:false,selectedRepoFiles:[],repoName:'Flask'};
 const $=(q,r=document)=>r.querySelector(q);const $$=(q,r=document)=>[...r.querySelectorAll(q)];
 const escapeHtml=s=>String(s??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
 const pct=n=>`${Number(n).toFixed(2)}%`;
 
 async function loadDemo(){
-  const names=['index','trace','coverage','adjudication','flip'];
+  const names=['index','trace','coverage','adjudication','flip','evaluation'];
   try{const values=await Promise.all(names.map(n=>fetch(`data/${n}.json`).then(r=>{if(!r.ok)throw Error(n);return r.json()})));names.forEach((n,i)=>state[n]=values[i]);renderBase();}
   catch(e){toast(`Could not load demo data: ${e.message}`);}
 }
@@ -15,7 +15,7 @@ function renderBase(){
   $('#changeSummary').textContent=state.flip.comparison.summary;
   $('#rwcMetric').textContent=pct(state.coverage.rwc_percent);$('#naiveMetric').textContent=pct(state.coverage.naive_file_coverage_percent);
   const full=Object.values(state.trace.examined).filter(v=>v===1).length;$('#fullReadMetric').textContent=String(full);
-  renderMap();renderClaims();renderEvidence();
+  renderMap();renderClaims();renderEvidence();renderEvaluation();
 }
 
 function highlightBefore(text){let s=escapeHtml(text);['confidentiality and integrity','can be decrypted'].forEach(p=>{s=s.replaceAll(p,`<mark>${p}</mark>`)});return s;}
@@ -35,6 +35,11 @@ function renderClaims(){
 
 function renderEvidence(){
   $('#evidenceList').innerHTML=state.adjudication.ranked_candidates.map((x,i)=>`<article class="evidence-row ${x.verdict}"><div><b>${String(i+1).padStart(2,'0')} · ${escapeHtml(x.path)}</b><small>${escapeHtml(x.reason)}</small><span class="tag ${x.verdict==='contradicts'?'contradicted':''}">${escapeHtml(x.verdict.toUpperCase())}</span></div><span class="evidence-score">${x.adjudicated_risk.toFixed(3)}</span><div class="evidence-bar"><i style="width:${Math.max(1,x.adjudicated_risk/0.54*100)}%"></i></div></article>`).join('');
+}
+
+function renderEvaluation(){
+  if(!state.evaluation)return;const labels={random:'Random baseline',semantic_only:'Semantic only',three_signal_composite:'Three-signal composite',claim_adjudicated:'Claim adjudicated'};
+  $('#evaluationList').innerHTML=Object.entries(state.evaluation.rankers).map(([name,m])=>`<article class="eval-row ${name==='claim_adjudicated'?'winner':''}"><div><header><b>${labels[name]||name}</b><small>MRR ${m.mrr.toFixed(3)} · NDCG@5 ${m.ndcg_at_5.toFixed(3)}</small></header><div class="eval-track"><i style="width:${m.recall_at_2*100}%"></i></div></div><span class="eval-score">${Math.round(m.recall_at_2*100)}%</span></article>`).join('');
 }
 
 function runAudit(){
@@ -66,18 +71,18 @@ $('#repoFolder').addEventListener('change',e=>{
   locPromise.then(lines=>{$('#uploadStatus').innerHTML=`<b>${escapeHtml(state.repoName)}</b> ready: ${units.length} source files · ${lines.reduce((a,b)=>a+b,0).toLocaleString()} sampled LOC. Ask your question below, then run the complete hosted audit.`;$('#startLiveAudit').disabled=!units.length;toast('Repository ready for live audit')});
 });
 $('#artifactFiles').addEventListener('change',async e=>{
-  const loaded={};for(const f of e.target.files){try{const data=JSON.parse(await f.text());if(data.units&&'rwc' in data)loaded.coverage=data;else if(data.units)loaded.index=data;else if(data.ranked_candidates)loaded.adjudication=data;else if(data.new_answer)loaded.flip=data;else if(data.examined)loaded.trace=data}catch{toast(`Invalid JSON: ${f.name}`)}}
+  const loaded={};for(const f of e.target.files){try{const data=JSON.parse(await f.text());if(data.units&&'rwc' in data)loaded.coverage=data;else if(data.units)loaded.index=data;else if(data.ranked_candidates)loaded.adjudication=data;else if(data.new_answer)loaded.flip=data;else if(data.examined)loaded.trace=data;else if(data.rankers)loaded.evaluation=data}catch{toast(`Invalid JSON: ${f.name}`)}}
   Object.assign(state,loaded);if(state.index&&state.trace&&state.coverage&&state.adjudication&&state.flip){renderBase();dialog.close();toast('Investigation artifacts loaded')}else{$('#uploadStatus').textContent=`Loaded ${Object.keys(loaded).join(', ')||'no recognized'} artifacts. Select all five JSON outputs for a complete investigation.`}
 });
 
 $('#startLiveAudit').addEventListener('click',startLiveAudit);
 async function startLiveAudit(){
   const api=$('#apiUrl').value.trim().replace(/\/$/,'');const token=$('#accessToken').value.trim();const question=$('#uploadQuestion').value.trim();const button=$('#startLiveAudit');
-  if(!api)return setUploadError('Enter the deployed Scotoma API URL.');if(question.length<5)return setUploadError('Enter a specific repository question in the chat box first.');if(!state.selectedRepoFiles.length)return setUploadError('Choose a repository folder first.');
+  if(!api)return setUploadError('Backend not configured. Deploy render.yaml, then paste its service URL here.');if(question.length<5)return setUploadError('Enter a specific repository question in the chat box first.');if(!state.selectedRepoFiles.length)return setUploadError('Choose a repository folder first.');
   localStorage.setItem('scotomaApiUrl',api);if(token)localStorage.setItem('scotomaAccessToken',token);button.disabled=true;button.textContent='Uploading repository…';
   const form=new FormData();form.append('question',question);state.selectedRepoFiles.forEach(file=>{form.append('files',file,file.name);form.append('paths',file.webkitRelativePath||file.name)});
   const headers={};if(token)headers['X-Scotoma-Token']=token;
-  try{const response=await fetch(`${api}/api/audits`,{method:'POST',headers,body:form});const body=await response.json().catch(()=>({}));if(!response.ok)throw Error(body.detail||`API returned ${response.status}`);dialog.close();showLiveProgress(body);await pollAudit(api,body.id,headers)}catch(error){setUploadError(error.message);dialog.showModal();button.disabled=false;button.innerHTML='Run live repository audit <span>→</span>'}
+  try{const response=await fetch(`${api}/api/audits`,{method:'POST',headers,body:form});const body=await response.json().catch(()=>({}));if(!response.ok)throw Error(body.detail||`API returned ${response.status}`);dialog.close();showLiveProgress(body);await pollAudit(api,body.id,headers)}catch(error){const message=error instanceof TypeError?'Could not reach that API URL. Confirm the service is deployed and CORS allows this Pages origin.':error.message;setUploadError(message);dialog.showModal();button.disabled=false;button.innerHTML='Run live repository audit <span>→</span>'}
 }
 function setUploadError(message){$('#uploadStatus').innerHTML=`<b style="color:var(--red)">Live audit unavailable:</b> ${escapeHtml(message)}`;toast(message)}
 function showLiveProgress(job){

@@ -58,6 +58,10 @@ def _parser() -> argparse.ArgumentParser:
     flip_parser.add_argument("--adjudication", required=True, dest="adjudication_path")
     flip_parser.add_argument("--out", default="flip.json")
     flip_parser.add_argument("--cache", default="adjudication_cache.json")
+    evaluate_parser = subcommands.add_parser("evaluate", help="Evaluate rankers against flip-verified evidence.")
+    evaluate_parser.add_argument("--coverage", required=True, dest="coverage_path")
+    evaluate_parser.add_argument("--adjudication", required=True, dest="adjudication_path")
+    evaluate_parser.add_argument("--out", default="evaluation.json")
     return parser
 
 
@@ -159,6 +163,27 @@ def _print_flip(result: dict, console: Console) -> None:
     console.print(f"[bold]Preloaded files:[/bold] {', '.join(result['preloaded_files'])}")
 
 
+def _print_evaluation(result: dict, console: Console) -> None:
+    console.print("\n[bold cyan]Flip-verified ground truth[/bold cyan]")
+    for path in result["ground_truth"]:
+        console.print(f" • {path}")
+    table = Table(title="Ranker Evaluation (zero API calls)")
+    table.add_column("Ranker", style="cyan")
+    table.add_column("Recall@2", justify="right")
+    table.add_column("MRR", justify="right")
+    table.add_column("NDCG@5", justify="right")
+    table.add_column("Relevant ranks")
+    for name, metrics in result["rankers"].items():
+        table.add_row(
+            name.replace("_", " "),
+            f"{metrics['recall_at_2']:.3f}",
+            f"{metrics['mrr']:.3f}",
+            f"{metrics['ndcg_at_5']:.3f}",
+            str(metrics.get("relevant_ranks", f"mean of {result['random_trials']} trials")),
+        )
+    console.print(table)
+
+
 def main(argv: Sequence[str] | None = None) -> int:
     args = _parser().parse_args(argv)
     console = Console()
@@ -233,6 +258,21 @@ def main(argv: Sequence[str] | None = None) -> int:
             return 1
         _print_flip(result, console)
         console.print(f"[green]Wrote flip result to[/green] {output_path.resolve()}")
+        return 0
+    if args.command == "evaluate":
+        try:
+            from .evaluate import evaluate_rankers
+
+            coverage = json.loads(Path(args.coverage_path).read_text(encoding="utf-8"))
+            adjudication = json.loads(Path(args.adjudication_path).read_text(encoding="utf-8"))
+            result = evaluate_rankers(coverage, adjudication)
+            output_path = Path(args.out).expanduser()
+            output_path.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
+        except (OSError, ValueError, json.JSONDecodeError) as error:
+            console.print(f"[bold red]Error:[/bold red] {error}")
+            return 1
+        _print_evaluation(result, console)
+        console.print(f"[green]Wrote evaluation to[/green] {output_path.resolve()}")
         return 0
     return 1
 
