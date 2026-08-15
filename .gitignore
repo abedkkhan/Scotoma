@@ -1,0 +1,13 @@
+.DS_Store
+.venv/
+__pycache__/
+*.py[cod]
+index.json
+trace.json
+coverage.json
+embeddings_cache.json
+adjudication.json
+adjudication_cache.json
+flip.json
+targets/
+.pytest_cache/
