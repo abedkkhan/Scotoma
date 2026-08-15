@@ -65,7 +65,8 @@ $('#presentBtn').addEventListener('click',()=>{document.body.classList.toggle('p
 
 const dialog=$('#uploadDialog');$('#uploadBtn').addEventListener('click',()=>dialog.showModal());$('#newAudit').addEventListener('click',beginNewAudit);$('.dialog-close').addEventListener('click',()=>dialog.close());
 const obsoleteApi='https://scotoma-api.onrender.com';if(localStorage.getItem('scotomaApiUrl')===obsoleteApi)localStorage.removeItem('scotomaApiUrl');
-$('#apiUrl').value=localStorage.getItem('scotomaApiUrl')||window.SCOTOMA_CONFIG?.apiUrl||'';$('#accessToken').value=localStorage.getItem('scotomaAccessToken')||'';
+const localApi=['127.0.0.1','localhost'].includes(location.hostname)?'http://127.0.0.1:8000':'';
+$('#apiUrl').value=localStorage.getItem('scotomaApiUrl')||window.SCOTOMA_CONFIG?.apiUrl||localApi;$('#accessToken').value=localStorage.getItem('scotomaAccessToken')||'';
 $('#uploadQuestion').value=$('#questionInput').value;$('#uploadQuestion').addEventListener('input',e=>$('#questionInput').value=e.target.value);
 function readyForAudit(){const ready=state.selectedRepoFiles.length&&state.selectedTranscript;$('#startLiveAudit').disabled=!ready;return ready}
 function beginNewAudit(){$('#questionInput').value='';$('#uploadQuestion').value='';state.selectedRepoFiles=[];state.selectedTranscript=null;$('#repoFolder').value='';$('#transcriptFile').value='';$('#startLiveAudit').disabled=true;$('#uploadStatus').innerHTML='<b>New audit.</b> Choose the repository and the Claude Code/Codex session log. Flask remains available as the bundled demo.';dialog.showModal()}
